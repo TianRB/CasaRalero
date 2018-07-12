@@ -3,11 +3,11 @@
 @section('content')
  <!-- Navbar -->
  @include('backend.layouts.navbars.nav_expand')
- @include('backend.slider.index.header')
+ @include('backend.slider.create.header')
  <div class="content">
-  <div class="row">
+
    @include('backend.slider.create.form')
-  </div>
+
  </div>
  @include('backend.layouts.footers.footer')
 @endsection
@@ -16,5 +16,5 @@
   tinymce.init({
     selector: '#contenido'
   });
-  </script> --}}	
+  </script> --}}
 @endsection

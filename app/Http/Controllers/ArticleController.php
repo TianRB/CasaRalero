@@ -71,7 +71,7 @@ class ArticleController extends Controller
        return redirect('articles/create')
                    ->withErrors( $validator )
                    ->withInput();
-        } else {  
+        } else {
             //dd($request->imagen);
             $a = new Article;
             $a->title = $request->input('titulo');
@@ -89,7 +89,7 @@ class ArticleController extends Controller
                 $file_name = $name.str_random(6).'.'.$image->getClientOriginalExtension();
                 $pic = new Pic;
                 $pic->path = 'article_pictures/'.$file_name;
-                $image->move('article_pictures/', $file_name); 
+                $image->move('article_pictures/', $file_name);
                 $a->pics()->save($pic);
             }
             return redirect('articles/');
@@ -119,7 +119,7 @@ class ArticleController extends Controller
        return redirect('articles/create')
                    ->withErrors( $validator )
                    ->withInput();
-        } else {  
+        } else {
             //dd($request->imagen);
             $img_paths[];
             foreach ($request->imagen as $image) {
@@ -129,9 +129,9 @@ class ArticleController extends Controller
                 $name = str_replace(' ', '', strtolower($input['titulo']));
                 $file_name = $name.'.'.$file->getClientOriginalExtension();
                 $url ='article_pictures/'.$file_name;
-                $request->imagen->move('article_pictures/', $file_name); 
+                $request->imagen->move('article_pictures/', $file_name);
             }
-            
+
             $a = new Article;
             $a->title = $request->input('titulo');
             $a->content = $request->input('contenido');
@@ -197,7 +197,7 @@ class ArticleController extends Controller
        return redirect('articles/create')
                    ->withErrors( $validator )
                    ->withInput();
-        } else {  
+        } else {
             $a = Article::find($id);
 
             if (Input::file('imagen')) {
@@ -207,17 +207,17 @@ class ArticleController extends Controller
                 $name = str_replace(' ', '', strtolower($input['titulo']));
                 $file_name = $name.'.'.$file->getClientOriginalExtension();
                 $url ='article_pictures/'.$file_name;
-                $request->imagen->move('article_pictures/', $file_name);  
+                $request->imagen->move('article_pictures/', $file_name);
                 $a->image = $url;
             }
-            
+
             $a->title = $request->input('titulo');
             $a->content = $request->input('contenido');
             $a->save();
             $a->categories()->sync($request->input('categoria') , false);
             $a->subcategories()->sync($request->input('subcategoria') , false);
             return redirect('articles/');
-        }    
+        }
     }
 
     /**

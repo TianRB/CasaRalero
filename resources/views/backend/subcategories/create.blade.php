@@ -3,11 +3,11 @@
 @section('content')
  <!-- Navbar -->
  @include('backend.layouts.navbars.nav_expand')
- @include('backend.subcategories.index.header')
+ @include('backend.subcategories.create.header')
  <div class="content">
-  <div class="row">
+
    @include('backend.subcategories.create.form')
-  </div>
+
  </div>
  @include('backend.layouts.footers.footer')
 @endsection

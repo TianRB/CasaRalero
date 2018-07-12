@@ -1,31 +1,26 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-10">
-            <div class="panel panel-default ">
-                <div class="panel-heading"></div>
+<div class="row justify-content-center">
+  @foreach($categories as $c)
+    <div class="col-md-5">
+       <div class="card article container">
+           <div class="card-header">
+             <div class="row justify-content-between">
+               <h4 class="col-md-8">{{ $c->name }}</h4>
 
-                <div class="panel-body">
-                    @foreach($categories as $c)
-                      <div class="card article container">
-                          <div class="card-header">
-                            <div class="row justify-content-between">
-                              <h4 class="col-md-8">{{ $c->name }}</h4>
-                               <div class="row">
-                                {{--<a href="{{ url('categories/'.$c->id.'/edit') }}"><button class="btn btn-warning article-btn" type="submit"><i class="fa fa-edit" /></i></button></a>--}}
-                                <form action="/categories/{{ $c->id }}" method="POST">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="DELETE" />
-                                <button class="btn btn-danger article-btn" type="submit"><i class="fa fa-trash" /></i></button>
-                                </form>
-                              </div> 
-                            </div>
-                          </div>
-                          <div class="card-body">
-                          </div>
-                      </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+             </div>
+           </div>
+           <div class="card-body">
+           </div>
+           <div class="card-footer">
+            <div class="row justify-content-end">
+             {{--<a href="{{ url('categories/'.$c->id.'/edit') }}"><button class="btn btn-warning article-btn" type="submit"><i class="fa fa-edit" /></i></button></a>--}}
+             <form action="/categories/{{ $c->id }}" method="POST">
+             {{ csrf_field() }}
+             <input type="hidden" name="_method" value="DELETE" />
+             <button class="btn btn-danger article-btn" type="submit"><i class="fa fa-trash" /></i></button>
+             </form>
+           </div>
+           </div>
+       </div>
     </div>
+    @endforeach
 </div>
