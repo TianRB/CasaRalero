@@ -11,7 +11,7 @@
            <div class="card-body">
             <div class="row justify-content-center">
              <div class="col-md-12">
-               <div class="image">
+               <div class="image" style="height:400px;">
                 <img src="{{ $a->one_pic->pluck('path')->pop() }}" alt="{{ $a->title }}">
                </div>
              </div>
@@ -30,14 +30,10 @@
              </div>
             </div>
             <hr>
-            <div class="row justify-contentn-center">
-             <div class="col-md-10 text-center">
-               <a class="btn btn-primary" href="{{ url('/showArticle/'.$a->id) }}"><i class="fa fa-search"></i> Ver en sitio</a>
-             </div>
-            </div>
            </div>
            <div class="card-footer">
             <div class="row justify-content-end align-items-center d-flex">
+             <a class="btn btn-primary" href="{{ url('/showArticle/'.$a->id) }}"><i class="fa fa-search"></i> Ver en sitio</a>
               <a class="btn btn-warning article-btn mx-2" href="{{ url('articles/'.$a->id.'/edit') }}"><i class="fa fa-edit" /></i></a>
               <form action="/articles/{{ $a->id }}" method="POST" class="no-margin">
               {{ csrf_field() }}
