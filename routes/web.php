@@ -14,12 +14,14 @@
 // Rutas de Sesión
 Auth::routes();
 
-// Rutas para Front-End
-Route::get('/', 'FrontController@showArticles');
-Route::get('/related/{category}', 'FrontController@showRelatedArticles');
-Route::get('/showArticle/{article}', 'FrontController@showArticle');
+// Rutas para Front
+Route::get('/'						, 'FrontController@index');
+Route::get('/related/{category}'	, 'FrontController@showRelatedArticles');
+Route::get('/product/{article}'		, 'FrontController@showArticle');
+Route::get('/category/{category}'	, 'FrontController@category');
 
-// Rutas para Back-End
+
+// Rutas para Admin
 Route::get('/home'				, 'HomeController@index')->name('home');
 Route::resource('articles'		, 'ArticleController');
 Route::resource('categories'	, 'CategoryController');

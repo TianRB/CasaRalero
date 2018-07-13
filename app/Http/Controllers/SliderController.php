@@ -47,11 +47,16 @@ class SliderController extends Controller
     	//dd($request->all());
         $input = $request->all();
         $rules = [
-         'titulo' => 'max:64',
+         'titulo' => 'required|max:64',
+         'descripcion' => 'required|max:128',
+         'url' => 'required',
          'imagen' => 'required|mimes:jpeg,png,jpg|max:150'
         ];
         $messages = [
-            //'titulo.required' => 'El campo "título" es obligatorio',
+            'titulo.required' => 'El campo "título" es obligatorio',
+            'titulo.max' => 'El campo "título" debe ser de menos de 64 caracteres',
+            'descripcion.required' => 'El campo "descripción" es obligatorio',
+            'url.required' => 'El campo "URL" es obligatorio',
             'imagen.required' => 'Debes subir una foto',
             'imagen.mimes' => 'El archivo debe ser una imágen',
             'imagen.max' => 'La imagen no debe pesar más de 150KB'
@@ -67,12 +72,14 @@ class SliderController extends Controller
             $file = Input::file('imagen');
             $name = str_replace(' ', '', strtolower($input['titulo']));
             $file_name = $name.str_random(6).'.'.$file->getClientOriginalExtension();
-            $url ='slider_pictures/'.$file_name;
+            $img_path ='slider_pictures/'.$file_name;
             $request->imagen->move('slider_pictures/', $file_name); 
 
             $s = new Slider;
             $s->title = $request->input('titulo');
-            $s->path = $url;
+            $s->description = $request->input('descripcion');
+            $s->url = $request->input('url');
+            $s->path = $img_path;
             if ($request->input('activado')) {
                 $s->enabled = true;
             }
@@ -100,7 +107,8 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $slide = Slider::find($id);
+        return view('backend.slider.edit', ['slide' => $slide]);
     }
 
     /**
@@ -112,7 +120,50 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $input = $request->all();
+        $rules = [
+         'titulo' => 'required|max:64',
+         'descripcion' => 'required|max:128',
+         'url' => 'required',
+         'imagen' => 'required|mimes:jpeg,png,jpg|max:150'
+        ];
+        $messages = [
+            'titulo.required' => 'El campo "título" es obligatorio',
+            'titulo.max' => 'El campo "título" debe ser de menos de 64 caracteres',
+            'descripcion.required' => 'El campo "descripción" es obligatorio',
+            'url.required' => 'El campo "URL" es obligatorio',
+            'imagen.required' => 'Debes subir una foto',
+            'imagen.mimes' => 'El archivo debe ser una imágen',
+            'imagen.max' => 'La imagen no debe pesar más de 150KB'
+        ];
+
+       $validator = Validator::make($input, $rules, $messages);
+       if ( $validator->fails() ) {
+       return redirect('sliders/create')
+                   ->withErrors( $validator )
+                   ->withInput();
+        } else {  
+            //  Crear Imagen
+            $file = Input::file('imagen');
+            $name = str_replace(' ', '', strtolower($input['titulo']));
+            $file_name = $name.str_random(6).'.'.$file->getClientOriginalExtension();
+            $img_path ='slider_pictures/'.$file_name;
+            $request->imagen->move('slider_pictures/', $file_name); 
+
+            $s = Slider::find($id);
+            $s->title = $request->input('titulo');
+            $s->description = $request->input('descripcion');
+            $s->url = $request->input('url');
+            $s->path = $img_path;
+            if ($request->input('activado')) {
+                $s->enabled = true;
+            } else {
+                $s->enabled = false;
+            }
+            $s->save();
+            return redirect('sliders/');
+        }
     }
 
     /**

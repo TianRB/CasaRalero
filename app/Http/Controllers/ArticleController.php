@@ -76,7 +76,6 @@ class ArticleController extends Controller
             $a = new Article;
             $a->title = $request->input('titulo');
             $a->content = $request->input('contenido');
-            $a->image = 'empty';
             $a->save();
             $a->categories()->sync($request->input('categoria'));
             $a->subcategories()->sync($request->input('subcategoria'));
@@ -95,53 +94,6 @@ class ArticleController extends Controller
             return redirect('articles/');
         }
     }
-    /*public function store(Request $request)
-    {
-        //dd($request->all());
-        $input = $request->all();
-
-        $rules = [
-         'titulo' => 'required|max:255',
-         'contenido' => 'required',
-         'imagen' => 'required',
-         'imagen.*' => 'mimes:jpeg,png,jpg|max:150'
-        ];
-        $messages = [
-            'titulo.required' => 'El campo "título" es obligatorio',
-            'contenido.required' => 'El campo "contenido" es obligatorio',
-            'imagen.required' => 'Debes subir una foto',
-            'imagen.mimes' => 'El archivo debe ser una imágen',
-            'imagen.max' => 'La imagen no debe pesar más de 150KB'
-        ];
-
-       $validator = Validator::make($input, $rules, $messages);
-       if ( $validator->fails() ) {
-       return redirect('articles/create')
-                   ->withErrors( $validator )
-                   ->withInput();
-        } else {
-            //dd($request->imagen);
-            $img_paths[];
-            foreach ($request->imagen as $image) {
-                //  Crear Imagen
-                $file = Input::file('imagen');
-                //dd($file);
-                $name = str_replace(' ', '', strtolower($input['titulo']));
-                $file_name = $name.'.'.$file->getClientOriginalExtension();
-                $url ='article_pictures/'.$file_name;
-                $request->imagen->move('article_pictures/', $file_name);
-            }
-
-            $a = new Article;
-            $a->title = $request->input('titulo');
-            $a->content = $request->input('contenido');
-            //$a->image = $url;
-            $a->save();
-            $a->categories()->sync($request->input('categoria'));
-            $a->subcategories()->sync($request->input('subcategoria'));
-            return redirect('articles/');
-        }
-    }*/
 
     /**
      * Display the specified resource.
@@ -183,11 +135,13 @@ class ArticleController extends Controller
         $rules = [
          'titulo' => 'required|max:255',
          'contenido' => 'required',
-         'imagen' => 'mimes:jpeg,png,jpg|max:150'
+         'imagen' => 'required',
+         'imagen.*' => 'mimes:jpeg,png,jpg|max:150'
         ];
         $messages = [
             'titulo.required' => 'El campo "título" es obligatorio',
             'contenido.required' => 'El campo "contenido" es obligatorio',
+            'imagen.required' => 'Debes subir una foto',
             'imagen.mimes' => 'El archivo debe ser una imágen',
             'imagen.max' => 'La imagen no debe pesar más de 150KB'
         ];
@@ -198,24 +152,25 @@ class ArticleController extends Controller
                    ->withErrors( $validator )
                    ->withInput();
         } else {
+            //dd($request->imagen);
             $a = Article::find($id);
-
-            if (Input::file('imagen')) {
-                //  Crear Imagen
-                $file = Input::file('imagen');
-                //dd($file);
-                $name = str_replace(' ', '', strtolower($input['titulo']));
-                $file_name = $name.'.'.$file->getClientOriginalExtension();
-                $url ='article_pictures/'.$file_name;
-                $request->imagen->move('article_pictures/', $file_name);
-                $a->image = $url;
-            }
-
             $a->title = $request->input('titulo');
             $a->content = $request->input('contenido');
             $a->save();
-            $a->categories()->sync($request->input('categoria') , false);
-            $a->subcategories()->sync($request->input('subcategoria') , false);
+            $a->categories()->sync($request->input('categoria'));
+            $a->subcategories()->sync($request->input('subcategoria'));
+            foreach ($request->imagen as $image) {
+                //  Crear Imagen
+                //$file = Input::file('imagen');
+                //dd($image);
+                $name = str_replace(' ', '', strtolower($input['titulo']));
+
+                $file_name = $name.str_random(6).'.'.$image->getClientOriginalExtension();
+                $pic = new Pic;
+                $pic->path = 'article_pictures/'.$file_name;
+                $image->move('article_pictures/', $file_name);
+                $a->pics()->save($pic);
+            }
             return redirect('articles/');
         }
     }

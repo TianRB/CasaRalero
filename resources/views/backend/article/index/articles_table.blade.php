@@ -5,7 +5,7 @@
        <div class="card article container {{ strtolower($a->subcategories->pluck('name')->implode(' ')) }}">
            <div class="card-header">
              <div class="row justify-content-between align-items-center d-flex">
-               <h4 class="col-md-8">{{ $a->title }}</h4>
+               <h4 class="col-md-10">{{ $a->title }}</h4>
              </div>
            </div>
            <div class="card-body">

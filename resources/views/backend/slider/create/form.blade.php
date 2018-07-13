@@ -19,6 +19,30 @@
                          </div>
 
                          <div class="form-group row justify-content-center">
+                             <label for="descripcion" class="col-md-10 text-left control-label">Descripción:</label>
+                             @if ($errors->has('descripcion'))
+                                 <span class="help-block">
+                                     <small class="text-danger">{{ $errors->first('descripcion') }}</small>
+                                 </span>
+                             @endif
+                             <div class="col-md-10">
+                                 <input id="descripcion" type="text" class="form-control" name="descripcion" value="{{ old('descripcion') }}" required>
+                             </div>
+                         </div>
+
+                         <div class="form-group row justify-content-center">
+                             <label for="url" class="col-md-10 text-left control-label">URL:</label>
+                             @if ($errors->has('url'))
+                                 <span class="help-block">
+                                     <small class="text-danger">{{ $errors->first('url') }}</small>
+                                 </span>
+                             @endif
+                             <div class="col-md-10">
+                                 <input id="url" type="text" class="form-control" name="url" value="{{ old('descripcion') }}" required>
+                             </div>
+                         </div>
+
+                         <div class="form-group row justify-content-center">
                              <label for="activado" class="col-md-10 text-left control-label">Activar imágen en Slider:
                               {!! Form::checkbox('activado',true) !!}</label>
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPicsToArticlesTable extends Migration
+class AddDescrColumnToSlider extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddPicsToArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::table('articles', function (Blueprint $table) {
-            //$table->string('image');
+        Schema::table('sliders', function (Blueprint $table) {
+            $table->string('description');
+            $table->string('url');
         });
     }
 
@@ -25,8 +26,9 @@ class AddPicsToArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::table('articles', function (Blueprint $table) {
-            //$table->dropColumn('image');
+        Schema::table('sliders', function (Blueprint $table) {
+            $table->dropColumn('description');
+            $table->dropColumn('url');
         });
     }
 }
