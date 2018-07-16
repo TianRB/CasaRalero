@@ -5,7 +5,7 @@
        <div class="card article container {{ strtolower($a->subcategories->pluck('name')->implode(' ')) }}">
            <div class="card-header">
              <div class="row justify-content-between align-items-center d-flex">
-               <h4 class="col-md-10">{{ $a->title }}</h4>
+               <h4 class="">{{ $a->title }}</h4>
              </div>
            </div>
            <div class="card-body">
@@ -32,14 +32,18 @@
             <hr>
            </div>
            <div class="card-footer">
-            <div class="row justify-content-end align-items-center d-flex">
-             <a class="btn btn-primary mr-2" href="{{ url('/showArticle/'.$a->id) }}"><i class="fas fa-globe"></i> Ver en sitio</a>
-             <a class="btn btn-info mr-2" href="{{ route('articles.show',$a->id) }}"><i class="fa fa-search"></i> Ver </a>
-              <a class="btn btn-warning mr-2" href="{{ url('articles/'.$a->id.'/edit') }}"><i class="fa fa-edit" /></i>Editar</a>
+            <div class="row justify-content-around align-items-center d-flex">
+             <!-- ver en sitio -->
+             <a class="btn btn-primary" href="{{ url('/showArticle/'.$a->id) }}"><i class="fas fa-globe"></i> Ver en sitio</a>
+             <!-- ver en backend -->
+             <a class="btn btn-info" href="{{ route('articles.show',$a->id) }}"><i class="fa fa-search"></i></a>
+             <!-- editar -->
+              <a class="btn btn-warning" href="{{ route('articles.edit',$a->id) }}"><i class="fa fa-edit"></i></a>
+              <!-- borrar -->
               <form action="/articles/{{ $a->id }}" method="POST" class="no-margin">
               {{ csrf_field() }}
               <input type="hidden" name="_method" value="DELETE" />
-              <button class="btn btn-danger mr-2" type="submit"><i class="fa fa-trash" /></i>Borrar</button>
+              <button class="btn btn-danger" type="submit"><i class="fa fa-trash" /></i></button>
               </form>
             </div>
            </div>

@@ -4,7 +4,7 @@
   <div class="card article container">
    <div class="card-header">
     <div class="row justify-content-between">
-     <h4 class="col-md-8">{{ $s->name }}</h4>
+     <h4 class="">{{ $s->name }}</h4>
     </div>
    </div>
    <div class="card-body">
@@ -17,12 +17,13 @@
     </ul>
    </div>
    <div class="card-footer">
-    <div class="row justify-content-end">
-     {{--<a href="{{ url('categories/'.$s->id.'/edit') }}"><button class="btn btn-warning article-btn" type="submit"><i class="fa fa-edit" /></i></button></a>--}}
-     <form action="/subcategories/{{ $s->id }}" method="POST">
+    <div class="row justify-content-end align-items-center d-flex">
+     <a class="btn btn-warning mr-2" href="{{ route('categories.edit',$s->id) }}"> <i class="fa fa-edit"></i></a>
+     <!-- borrar -->
+     <form action="/subcategories/{{ $s->id }}" method="POST" class="m-0">
      {{ csrf_field() }}
      <input type="hidden" name="_method" value="DELETE" />
-     <button class="btn btn-danger article-btn" type="submit"><i class="fa fa-trash" /></i></button>
+     <button class="btn btn-danger" type="submit"><i class="fa fa-trash" /></i></button>
      </form>
    </div>
    </div>
