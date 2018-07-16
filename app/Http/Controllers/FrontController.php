@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Slider;
+use App\Subcategory;
 
 class FrontController extends Controller
 {
@@ -17,42 +18,43 @@ class FrontController extends Controller
 
     public function category($category) 
     {
+        $sub = Subcategory::all();
         switch ($category) {
 
             case 'muebles':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Muebles'); })->get();
-                return view('frontend.category', ['articles' => $articles]);
+                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
         
             case 'silleria':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Silleria'); })->get();
-                return view('frontend.category', ['articles' => $articles]);
+                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
         
             case 'archivo':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Archivo'); })->get();
-                return view('frontend.category', ['articles' => $articles]);
+                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
         
             case 'cafeteria-y-hoteleria':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Cafetería y Hotelería'); })->get();
-                return view('frontend.category', ['articles' => $articles]);
+                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
         
             case 'sofas-y-espera':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'SofasEspera'); })->get();
-                return view('frontend.category', ['articles' => $articles]);
+                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
         
             case 'recepciones':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Recepciones'); })->get();
-                return view('frontend.category', ['articles' => $articles]);
+                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
         
             case 'accesorios':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Accesorios'); })->get();
-                return view('frontend.category', ['articles' => $articles]);
+                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
         
         }
     }
