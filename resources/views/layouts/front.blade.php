@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	   <link rel="shortcut icon" type="image/png" href="{{ url('img/casa-ralero-icon.png') }}"/>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -38,7 +39,7 @@
 				<li><a href="{{ url('/category/recepciones/') }}">Recepciones</a></li>
 				<li><a href="{{ url('/category/accesorios/') }}">Accesorios</a></li>
 			</ul>
-			<div class="menu-secundario">	
+			<div class="menu-secundario">
 				<nav>
 					<ul>
 						<li><p>Tel. 229 931 6993</p></li>
@@ -49,7 +50,7 @@
 				</nav>
 				<div class="horario">
 					<span class="triangulito"></span>
-					<p><strong>Lunes a viernes:</strong> de 9:30  a 13:30 y de 16:00 a 19:00 hrs.</p> 
+					<p><strong>Lunes a viernes:</strong> de 9:30  a 13:30 y de 16:00 a 19:00 hrs.</p>
 					<p><strong>Sábados:</strong> de 9:30 a 13:30 hrs.</p>
 				</div>
 				<div class="btn-call">Llámanos</div>
@@ -94,6 +95,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 {!! Html::script('js/script.js') !!}
 
-	
+
 </body>
 </html>

@@ -9,7 +9,7 @@
 
         <div class="user">
             <div class="photo">
-                {{--<img src="#">--}}
+              <img src="{{ url('img/casa-ralero-icon.png') }}" alt="">
             </div>
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -43,7 +43,7 @@
 
         <ul class="nav">
 
-              <li class="active">
+              <li class="">
                     <a href="{{ url('/') }}">
 
                         <i class="fa fa-tachometer-alt"></i>

@@ -33,12 +33,13 @@
            </div>
            <div class="card-footer">
             <div class="row justify-content-end align-items-center d-flex">
-             <a class="btn btn-primary" href="{{ url('/showArticle/'.$a->id) }}"><i class="fa fa-search"></i> Ver en sitio</a>
-              <a class="btn btn-warning article-btn mx-2" href="{{ url('articles/'.$a->id.'/edit') }}"><i class="fa fa-edit" /></i></a>
+             <a class="btn btn-primary mr-2" href="{{ url('/showArticle/'.$a->id) }}"><i class="fas fa-globe"></i> Ver en sitio</a>
+             <a class="btn btn-info mr-2" href="{{ route('articles.show',$a->id) }}"><i class="fa fa-search"></i> Ver </a>
+              <a class="btn btn-warning mr-2" href="{{ url('articles/'.$a->id.'/edit') }}"><i class="fa fa-edit" /></i>Editar</a>
               <form action="/articles/{{ $a->id }}" method="POST" class="no-margin">
               {{ csrf_field() }}
               <input type="hidden" name="_method" value="DELETE" />
-              <button class="btn btn-danger article-btn" type="submit"><i class="fa fa-trash" /></i></button>
+              <button class="btn btn-danger mr-2" type="submit"><i class="fa fa-trash" /></i>Borrar</button>
               </form>
             </div>
            </div>

@@ -103,7 +103,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        dd('ArticleController@show');
+        return view('backend.article.show',['article' => $article]);
     }
 
     /**
