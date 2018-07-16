@@ -11,4 +11,6 @@ npm-debug.log
 yarn-error.log
 .env
 front-end-source/
+public/article_pictures/
+public/slider_pictures/
 *.zip
