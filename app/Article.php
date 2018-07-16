@@ -37,5 +37,10 @@ class Article extends Model
         return $this->pics()->take(1);
     }
 
+    public function scopeTitle($query, $title)
+    {
+     return $query->where("title","like","%$title%");
+    }
+
 
 }

@@ -1,15 +1,15 @@
 <div class="panel-header panel-header-md">
 
  <div class="header text-center">
-  <h2 class="title">Artículos</h2>
+  <h2 class="title">Resultados para "{{$title}}"</h2>
   <div class="row justify-content-center align-items-center">
    <div class="col-md-4">
     <p class="category">
-     <a href="{{ route('articles.create') }}"><i class="fa fa-plus"></i>  Agregar articulo</a>
+  <a class="text-white" href="{{ route('articles.index') }}"><i class="fa fa-list-ul"></i>&nbsp;Volver a listado de articulos</a>
     </p>
    </div>
-   <div class="col-10 col-md-4">
-      <h6 class="text-left text-white">Buscar artículo</h6>
+   <div class="col-10 col-md-4 text-left">
+    <span class="text-left text-white">Buscar artículo</span>
     <form class="form-horizontal " method="POST" enctype="multipart/form-data" action="{{ route('articles.search') }}">
      {{ csrf_field() }}
      <div class="input-group no-border">

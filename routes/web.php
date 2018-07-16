@@ -27,3 +27,4 @@ Route::resource('articles'		, 'ArticleController');
 Route::resource('categories'	, 'CategoryController');
 Route::resource('subcategories'	, 'SubcategoryController');
 Route::resource('sliders'		, 'SliderController');
+Route::post('articles/search',['uses' => 'ArticleController@searchResults', 'as' => 'articles.search']);

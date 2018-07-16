@@ -218,4 +218,15 @@ class ArticleController extends Controller
         // Save subcategory $s without detaching other subcategories
         $a->subcategories()->sync($s, false);
     }
+    public function searchResults(Request $request)
+    {
+     $title = $request->title;
+     //dd($title);
+     $articles = Article::Title($title)->get();
+     //dd($articles);
+     return view('backend.article.search', [
+      'articles' => $articles,
+      'title' => $title
+     ]);
+    }
 }
