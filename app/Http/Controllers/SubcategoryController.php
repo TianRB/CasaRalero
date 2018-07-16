@@ -80,7 +80,8 @@ class SubcategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subcategory = Subcategory::find($id);
+        return view('backend.subcategories.edit', ['s' => $subcategory]);
     }
 
     /**
@@ -92,8 +93,27 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $input = $request->all();
+
+        $rules = [
+         'nombre' => 'required|max:64|unique:subcategories,name',
+        ];
+        $messages = [
+            'nombre.required' => 'El campo "nombre" es obligatorio',
+            'nombre.max' => 'El nombre de la subcategoría debe ser de menos de 64 caracteres',
+            'nombre.unique' => 'El nombre de la subcategoría ya existe',
+        ];
+       $validator = Validator::make($input, $rules, $messages);
+       if ( $validator->fails() ) {
+       return redirect('subcategories/create')
+                   ->withErrors( $validator )
+                   ->withInput();
+        } else {  
+            $subcat = Subcategory::find($id);
+            $subcat->name = $request->input('nombre');
+            $subcat->save();
+        }
+        return redirect('subcategories/');    }
 
     /**
      * Remove the specified resource from storage.
