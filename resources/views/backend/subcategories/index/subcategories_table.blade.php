@@ -18,7 +18,7 @@
    </div>
    <div class="card-footer">
     <div class="row justify-content-end align-items-center d-flex">
-     <a class="btn btn-warning mr-2" href="{{ route('categories.edit',$s->id) }}"> <i class="fa fa-edit"></i></a>
+     <a class="btn btn-warning mr-2" href="{{ route('subcategories.edit',$s->id) }}"> <i class="fa fa-edit"></i></a>
      <!-- borrar -->
      <form action="/subcategories/{{ $s->id }}" method="POST" class="m-0">
      {{ csrf_field() }}
