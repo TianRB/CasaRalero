@@ -22,7 +22,7 @@ Route::get('/category/{category}'	, 'FrontController@category');
 
 
 // Rutas para Admin
-Route::get('/home'				, 'HomeController@index')->name('home');
+Route::get('/dashboard'				, 'HomeController@index')->name('home');
 Route::resource('articles'		, 'ArticleController');
 Route::resource('categories'	, 'CategoryController');
 Route::resource('subcategories'	, 'SubcategoryController');
