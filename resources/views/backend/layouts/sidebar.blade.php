@@ -42,11 +42,18 @@
         </div>
 
         <ul class="nav">
+              <li class="">
+                    <a href="{{ route('home') }}">
 
+                        <i class="fa fa-tachometer-alt"></i>
+
+                      <p>Dashboard</p>
+                    </a>
+              </li>
               <li class="">
                     <a href="{{ url('/') }}">
 
-                        <i class="fa fa-tachometer-alt"></i>
+                        <i class="fa fa-globe"></i>
 
                       <p>Ir a Sitio</p>
                     </a>

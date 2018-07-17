@@ -1,5 +1,12 @@
 @extends('backend.layouts.app')
 @section('content')
+  @include('backend.layouts.navbars.nav_expand')
+  <div class="panel-header panel-header-sm">
+   <div class="header text-center">
+
+   <!--    <p class="category"><a href="{{ route('categories.create') }}"><i class="fa fa-plus"></i>  Agregar categoría</a></p> -->
+   </div>
+  </div>
  <div class="row justify-content-center p-5" style="height:100vh;">
   <div class="col-md-10">
 
@@ -9,7 +16,7 @@
    </div>
    <hr>
    <div class="row">
-    <div class="col">
+    <div class="col-12 col-md-4">
      <h3>Artículos</h3>
      <ul>
       <li>
@@ -20,7 +27,7 @@
       </li>
      </ul>
     </div>
-    <div class="col">
+    <div class="col-12 col-md-4">
      <h3>Categorías</h3>
      <ul>
       <li>
@@ -41,7 +48,7 @@
       </li>
      </ul>
     </div>
-    <div class="col">
+    <div class="col-12 col-md-4">
      <h3>Banners</h3>
      <ul>
       <li>

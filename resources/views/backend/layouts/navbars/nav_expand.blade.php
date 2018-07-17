@@ -8,58 +8,52 @@
 					<span class="navbar-toggler-bar bar3"></span>
 				</button>
 			</div>
-			<a class="navbar-brand" href="#!">CASA RALERO</a>
+			<a class="navbar-brand" href="{{route('home')}}">CASA RALERO</a>
 		</div>
 
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-bar navbar-kebab"></span>
-			<span class="navbar-toggler-bar navbar-kebab"></span>
-			<span class="navbar-toggler-bar navbar-kebab"></span>
-		</button>
-
-	    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+	   <!--  <div class="collapse navbar-collapse justify-content-end" id="navigation">
 
 
-    {{-- <form class="m-0">
-    <div class="input-group no-border">
-        <input type="text" value="" class="form-control" placeholder="Search...">
-        <div class="input-group-append">
-         <div class="input-group-text">
-           <i class="fa fa-search"></i>
-         </div>
-       </div>
-    </div>
-</form>--}}
+	       {{-- <form class="m-0">
+	       <div class="input-group no-border">
+	           <input type="text" value="" class="form-control" placeholder="Search...">
+	           <div class="input-group-append">
+	            <div class="input-group-text">
+	              <i class="fa fa-search"></i>
+	            </div>
+	          </div>
+	       </div>
+	   </form>--}}
 
-<ul class="navbar-nav">
-  {{--<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fa fa-bars"></i>
-      <p>
-        <span class="d-lg-none d-md-block">Some Actions</span>
-      </p>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-    </div>
-  </li>
+	   <ul class="navbar-nav">
+	     {{--<li class="nav-item dropdown">
+	       <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	         <i class="fa fa-bars"></i>
+	         <p>
+	           <span class="d-lg-none d-md-block">Some Actions</span>
+	         </p>
+	       </a>
+	       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+	         <a class="dropdown-item" href="#">Action</a>
+	         <a class="dropdown-item" href="#">Another action</a>
+	         <a class="dropdown-item" href="#">Something else here</a>
+	       </div>
+	     </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="#pablo">
-      <i class="fa fa-user"></i>
-      <p>
-        <span class="d-lg-none d-md-block">Account</span>
-      </p>
-    </a>
-  </li>--}}
-</ul>
+	     <li class="nav-item">
+	       <a class="nav-link" href="#pablo">
+	         <i class="fa fa-user"></i>
+	         <p>
+	           <span class="d-lg-none d-md-block">Account</span>
+	         </p>
+	       </a>
+	     </li>--}}
+	   </ul>
 
 
 
 
 
-	    </div>
+	   </div> -->
 	</div>
 </nav>

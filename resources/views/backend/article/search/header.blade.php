@@ -1,9 +1,9 @@
-<div class="panel-header panel-header-md">
+<div class="panel-header panel-header-lg">
 
  <div class="header text-center">
-  <h2 class="title">Resultados para "{{$title}}"</h2>
+  <h2 class="title">Resultados para <br> "{{$title}}"</h2>
   <div class="row justify-content-center align-items-center">
-   <div class="col-md-4">
+   <div class="col-md-4 mb-4 m-md-0">
     <p class="category">
   <a class="text-white" href="{{ route('articles.index') }}"><i class="fa fa-list-ul"></i>&nbsp;Volver a listado de articulos</a>
     </p>
