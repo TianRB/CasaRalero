@@ -4,7 +4,7 @@
 <!-- ****************  COMIENZA SLIDE  **************** -->
 <section class="contenedor-slide slider">
 	@foreach($slides as $s)
-	<article id="ele1" class="s_element s_visible"s>
+	<article id="ele1" class="s_element @if($loop->first) s_visible @endif">
 		<div class="texto-slide">
 			<h2>{{ $s->title }}</h2>
 			<p>{{ $s->description }}</p>

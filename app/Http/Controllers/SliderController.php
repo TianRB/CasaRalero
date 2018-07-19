@@ -50,7 +50,7 @@ class SliderController extends Controller
          'titulo' => 'required|max:64',
          'descripcion' => 'required|max:128',
          'url' => 'required',
-         'imagen' => 'required|mimes:jpeg,png,jpg|max:150'
+         'imagen' => 'required|mimes:jpeg,png,jpg|max:400'
         ];
         $messages = [
             'titulo.required' => 'El campo "título" es obligatorio',
@@ -59,7 +59,7 @@ class SliderController extends Controller
             'url.required' => 'El campo "URL" es obligatorio',
             'imagen.required' => 'Debes subir una foto',
             'imagen.mimes' => 'El archivo debe ser una imágen',
-            'imagen.max' => 'La imagen no debe pesar más de 150KB'
+            'imagen.max' => 'La imagen no debe pesar más de 400KB'
         ];
 
        $validator = Validator::make($input, $rules, $messages);
@@ -126,7 +126,7 @@ class SliderController extends Controller
          'titulo' => 'required|max:64',
          'descripcion' => 'required|max:128',
          'url' => 'required',
-         'imagen' => 'required|mimes:jpeg,png,jpg|max:150'
+         'imagen' => 'required|mimes:jpeg,png,jpg|max:400'
         ];
         $messages = [
             'titulo.required' => 'El campo "título" es obligatorio',
@@ -135,7 +135,7 @@ class SliderController extends Controller
             'url.required' => 'El campo "URL" es obligatorio',
             'imagen.required' => 'Debes subir una foto',
             'imagen.mimes' => 'El archivo debe ser una imágen',
-            'imagen.max' => 'La imagen no debe pesar más de 150KB'
+            'imagen.max' => 'La imagen no debe pesar más de 400KB'
         ];
 
        $validator = Validator::make($input, $rules, $messages);

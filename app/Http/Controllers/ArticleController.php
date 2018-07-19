@@ -56,14 +56,14 @@ class ArticleController extends Controller
          'titulo' => 'required|max:255',
          'contenido' => 'required',
          'imagen' => 'required',
-         'imagen.*' => 'mimes:jpeg,png,jpg|max:150'
+         'imagen.*' => 'mimes:jpeg,png,jpg|max:400'
         ];
         $messages = [
             'titulo.required' => 'El campo "título" es obligatorio',
             'contenido.required' => 'El campo "contenido" es obligatorio',
             'imagen.required' => 'Debes subir una foto',
             'imagen.mimes' => 'El archivo debe ser una imágen',
-            'imagen.max' => 'La imagen no debe pesar más de 150KB'
+            'imagen.max' => 'La imagen no debe pesar más de 400KB'
         ];
 
        $validator = Validator::make($input, $rules, $messages);
@@ -136,14 +136,14 @@ class ArticleController extends Controller
          'titulo' => 'required|max:255',
          'contenido' => 'required',
          'imagen' => 'required',
-         'imagen.*' => 'mimes:jpeg,png,jpg|max:150'
+         'imagen.*' => 'mimes:jpeg,png,jpg|max:400'
         ];
         $messages = [
             'titulo.required' => 'El campo "título" es obligatorio',
             'contenido.required' => 'El campo "contenido" es obligatorio',
             'imagen.required' => 'Debes subir una foto',
             'imagen.mimes' => 'El archivo debe ser una imágen',
-            'imagen.max' => 'La imagen no debe pesar más de 150KB'
+            'imagen.max' => 'La imagen no debe pesar más de 400KB'
         ];
 
        $validator = Validator::make($input, $rules, $messages);
