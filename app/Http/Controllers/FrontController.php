@@ -6,17 +6,23 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\Slider;
 use App\Subcategory;
+use App\Message;
+use App\Mail\NewMessage;
+use App\Mail\RecievedMessage;
+
+use Mail;
+use Validator;
 
 class FrontController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $slides = Slider::where('enabled', 1)->take(3)->get();
         return view('frontend.index', ['slides' => $slides]);
     }
 
 
-    public function category($category) 
+    public function category($category)
     {
         $sub = Subcategory::all();
         switch ($category) {
@@ -25,50 +31,50 @@ class FrontController extends Controller
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Muebles'); })->get();
                 return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-        
+
             case 'silleria':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Silleria'); })->get();
                 return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-        
+
             case 'archivo':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Archivo'); })->get();
                 return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-        
+
             case 'cafeteria-y-hoteleria':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Cafetería y Hotelería'); })->get();
                 return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-        
+
             case 'sofas-y-espera':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'SofasEspera'); })->get();
                 return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-        
+
             case 'recepciones':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Recepciones'); })->get();
                 return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-        
+
             case 'accesorios':
                 $articles = Article::whereHas('categories', function($query) {
                     $query->where('categories.name', 'Accesorios'); })->get();
                 return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-        
+
         }
     }
 
-    public function showArticles() 
+    public function showArticles()
     {
         $articles = Article::all();
         return view('front', ['articles' => $articles]);
     }
-    public function showRelatedArticles($category) 
+    public function showRelatedArticles($category)
     {
         // Decode JSON to PHP array
         $category = json_decode($category);
-        
+
         // If it's an array
         if (is_array($category)){
             //Obtener todos los id de categoria
@@ -82,7 +88,7 @@ class FrontController extends Controller
         }
         return view('front', ['articles' => $articles]);
     }
-    public function showArticle($article_id) 
+    public function showArticle($article_id)
     {
         //dd('success');
         // Decode JSON to PHP array
@@ -101,5 +107,42 @@ class FrontController extends Controller
         }
         //dd($articles);
         return view('frontend.article', ['main' => $a, 'related' => $articles]);
+    }
+    public function messagesend(Request $request)
+    {
+      $input = $request->all();
+      //dd($input);
+
+      $rules = [
+       'name' => 'required|max:64|unique:categories,name',
+       'email' => 'required|email',
+       'phone' => 'required|numeric'
+      ];
+      $messages = [
+          'name.required' => 'El campo "nombre" es obligatorio.',
+          'name.max' => 'El nombre debe tener de menos de 64 caracteres.',
+          'email.required' => 'el campo "email" es obligatorio',
+           'email.email' => 'La el correo no es una dirección válida.',
+          'phone.required' => 'El campo "Teléfono" es obligatorio',
+          'phone.numeric' => 'El campo "Teléfono" debe contener sólo números.'
+      ];
+     $validator = Validator::make($input, $rules, $messages);
+     if ( $validator->fails() ) {
+     return redirect('/#contacto')
+                 ->withErrors( $validator )
+                 ->withInput();
+      } else {
+       $message = Message::create([
+        'name' => $input['name'],
+        'phone' => $input['phone'],
+        'email' => $input['email'],
+        'message' => $input['message']
+       ]);
+       //$mall = Message::all();
+       //dd($mall,$message);
+       Mail::to('contacto@casaralero.com.mx')->send(new NewMessage($message));
+       Mail::to($message->email)->send(new RecievedMessage($message));
+       return redirect()->route('front.index');
+      }
     }
 }

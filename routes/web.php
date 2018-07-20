@@ -15,10 +15,11 @@
 Auth::routes();
 
 // Rutas para Front
-Route::get('/'						, 'FrontController@index');
+Route::get('/'						, 'FrontController@index')->name('front.index');
 Route::get('/related/{category}'	, 'FrontController@showRelatedArticles');
 Route::get('/product/{article}'		, 'FrontController@showArticle');
 Route::get('/category/{category}'	, 'FrontController@category');
+Route::get('/sendmessage', 'FrontController@messagesend')->name('send.message');
 
 
 // Rutas para Admin

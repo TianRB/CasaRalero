@@ -72,14 +72,41 @@
 <div class="contacto" id="contacto">
 	<div class="fondo-contacto"></div>
 		<h3>Mantente en Contacto</h3>
-		<form action="" class="formulario-contacto">
+		<form action="{{route('send.message')}}" metohd="POST" class="formulario-contacto">
+			{{ csrf_field() }}
 			<ul>
-				<li><input type="text" placeholder="Nombre y Apellido"></li>
-				<li><input type="text" placeholder="Correo Electrónico"></li>
-				<li><input type="text" placeholder="Teléfono"></li>
-				<li><textarea name="" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
+				<li>
+					<input type="text" placeholder="Nombre y Apellido" name="name">
+					<br>
+					@if ($errors->has('name'))
+									<small style="color:red;">
+													<strong>{{ $errors->first('name') }}</strong>
+									</small>
+					@endif
+				</li>
+				<li>
+					<input type="text" placeholder="Correo Electrónico" name="email">
+					<br>
+					@if ($errors->has('email'))
+									<small style="color:red;">
+													<strong>{{ $errors->first('email') }}</strong>
+									</small>
+					@endif
+				</li>
+				<li>
+					<input type="text" placeholder="Teléfono" name="phone">
+					<br>
+					@if ($errors->has('phone'))
+									<small style="color:red;">
+													<strong>{{ $errors->first('phone') }}</strong>
+									</small>
+					@endif
+				</li>
+				<li>
+					<textarea id="" placeholder="¿Cómo podemos ayudarle?" name="message"></textarea>
+				</li>
 			</ul>
-			<div class="btn-enviar">enviar</div>
+			<div class=""><input type="submit" class="btn-enviar" value="Enviar"></div>
 		</form>
 </div>
 <div class="mapa">
