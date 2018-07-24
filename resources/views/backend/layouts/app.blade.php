@@ -1,4 +1,4 @@
-<html lang="en" class="perfect-scrollbar-off">
+<html lang="es" class="perfect-scrollbar-off">
  <head>
      <meta charset="utf-8">
      <link rel="icon" type="image/png" href="../assets/img/favicon.png">

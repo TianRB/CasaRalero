@@ -28,3 +28,7 @@
 .form-control i{
 	 color:#fff;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}

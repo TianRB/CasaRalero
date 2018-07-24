@@ -13,7 +13,7 @@
                                 </span>
       @endif
       <div class="col-md-10">
-       <input id="titulo" type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" required autofocus>
+       <input id="titulo" type="text" class="form-control" name="titulo" value="{{ old('titulo') }}">
       </div>
      </div>
 
@@ -72,14 +72,19 @@
      --}}
      <div class="form-group-file py-4 row justify-content-center">
       <label for="imagen" class="col-md-10 text-left control-label">Imágenes:</label>
-      @if ($errors->has('imagen'))
-      <span class="help-block">
-                                    <small class="text-danger">{{ $errors->first('imagen') }}</small>
-                                </span>
-      @endif
-      <input id="image" name="imagen[]" type="file" class="file" multiple="" placeholder="Subir Archivos"/>
+      <div class="col-10 mb-3">
+       <div class="row p-3" id="filearray"></div>
+      </div>
+      <div class="custom-file col-md-10">
+       <input id="image" name="imagen[]" type="file" class="custom-file-input" multiple=""/>
+       <label class="custom-file-label" for="image">Seleccionar Archivo</label>
+       @if ($errors->has('imagen'))
+       <span class="help-block">
+        <small class="text-danger">{{ $errors->first('imagen') }}</small>
+       </span>
+       @endif
+      </div>
      </div>
-
      <div class="form-group row justify-content-center">
       <div class="col-md-8 text-center">
        <button type="submit" class="btn btn-info">
