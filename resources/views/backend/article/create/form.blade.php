@@ -6,14 +6,14 @@
      {{ csrf_field() }}
 
      <div class="form-group row justify-content-center">
-      <label for="titulo" class="col-md-10 text-left control-label">Título</label>
-      @if ($errors->has('titulo'))
+      <label for="title" class="col-md-10 text-left control-label">Título</label>
+      @if ($errors->has('title'))
       <span class="help-block">
-                                    <small class="text-danger">{{ $errors->first('titulo') }}</small>
+                                    <small class="text-danger">{{ $errors->first('title') }}</small>
                                 </span>
       @endif
       <div class="col-md-10">
-       <input id="titulo" type="text" class="form-control" name="titulo" value="{{ old('titulo') }}">
+       <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}">
       </div>
      </div>
 

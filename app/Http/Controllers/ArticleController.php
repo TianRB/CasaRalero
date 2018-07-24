@@ -14,7 +14,7 @@ use File;
 
 class ArticleController extends Controller
 {
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -53,13 +53,14 @@ class ArticleController extends Controller
         $input = $request->all();
 
         $rules = [
-         'titulo' => 'required|max:255',
+         'title' => 'unique:articles|required|max:255',
          'contenido' => 'required',
          'imagen' => 'required',
          'imagen.*' => 'mimes:jpeg,png,jpg|max:400'
         ];
         $messages = [
-            'titulo.required' => 'El campo "título" es obligatorio',
+            'title.unique' => 'Ya existe un Atrículo con este nombre',
+            'title.required' => 'El campo "título" es obligatorio',
             'contenido.required' => 'El campo "contenido" es obligatorio',
             'imagen.required' => 'Debes subir una foto',
             'imagen.mimes' => 'El archivo debe ser una imágen',
@@ -68,15 +69,15 @@ class ArticleController extends Controller
 
        $validator = Validator::make($input, $rules, $messages);
        if ( $validator->fails() ) {
-       //dd($validator);
        return redirect('articles/create')
                    ->withErrors( $validator )
                    ->withInput();
         } else {
             //dd($request->imagen);
             $a = new Article;
-            $a->title = $request->input('titulo');
+            $a->title = $request->input('title');
             $a->content = $request->input('contenido');
+            $a->slug = $a->getSlugFromTitle();
             $a->save();
             $a->categories()->sync($request->input('categoria'));
             $a->subcategories()->sync($request->input('subcategoria'));
@@ -84,7 +85,7 @@ class ArticleController extends Controller
                 //  Crear Imagen
                 //$file = Input::file('imagen');
                 //dd($image);
-                $name = str_replace(' ', '', strtolower($input['titulo']));
+                $name = str_replace(' ', '', strtolower($input['title']));
 
                 $file_name = $name.str_random(6).'.'.$image->getClientOriginalExtension();
                 $pic = new Pic;
@@ -132,45 +133,45 @@ class ArticleController extends Controller
     {
         //dd($request->all());
         $input = $request->all();
-
+        $a = Article::find($id);
         $rules = [
-         'titulo' => 'required|max:255',
+         'title' => 'unique:articles,title,'.$a->id.'|required|max:255',
          'contenido' => 'required',
-         'imagen' => 'required',
          'imagen.*' => 'mimes:jpeg,png,jpg|max:400'
         ];
         $messages = [
-            'titulo.required' => 'El campo "título" es obligatorio',
+            'title.unique' => 'Ya existe un Atrículo con este nombre',
+            'title.required' => 'El campo "título" es obligatorio',
             'contenido.required' => 'El campo "contenido" es obligatorio',
-            'imagen.required' => 'Debes subir una foto',
             'imagen.mimes' => 'El archivo debe ser una imágen',
             'imagen.max' => 'La imagen no debe pesar más de 400KB'
         ];
 
        $validator = Validator::make($input, $rules, $messages);
        if ( $validator->fails() ) {
-       return redirect('articles/create')
+       return redirect('articles/'.$id.'/edit')
                    ->withErrors( $validator )
                    ->withInput();
         } else {
             //dd($request->imagen);
             $a = Article::find($id);
-            $a->title = $request->input('titulo');
+            $a->title = $request->input('title');
             $a->content = $request->input('contenido');
+            $a->slug = $a->getSlugFromTitle();
             $a->save();
             $a->categories()->sync($request->input('categoria'));
             $a->subcategories()->sync($request->input('subcategoria'));
-            foreach ($request->imagen as $image) {
-                //  Crear Imagen
-                //$file = Input::file('imagen');
-                //dd($image);
-                $name = str_replace(' ', '', strtolower($input['titulo']));
+            if ($request->imagen) {
+                foreach ($request->imagen as $image) {
+                    //  Crear Imagen
+                    $name = str_replace(' ', '', strtolower($input['title']));
 
-                $file_name = $name.str_random(6).'.'.$image->getClientOriginalExtension();
-                $pic = new Pic;
-                $pic->path = 'article_pictures/'.$file_name;
-                $image->move('article_pictures/', $file_name);
-                $a->pics()->save($pic);
+                    $file_name = $name.str_random(6).'.'.$image->getClientOriginalExtension();
+                    $pic = new Pic;
+                    $pic->path = 'article_pictures/'.$file_name;
+                    $image->move('article_pictures/', $file_name);
+                    $a->pics()->save($pic);
+                }
             }
             return redirect('articles/');
         }
@@ -230,4 +231,18 @@ class ArticleController extends Controller
       'title' => $title
      ]);
     }
+    /**
+     * Auxiliar function to give all Articles a slug, if they don´t have one.
+     **/
+    public function addSlugToAll()
+    {
+        $articles = Article::where('slug', '')->get();
+        //dd($articles);
+        foreach ($articles as $a) {
+            $a->slug = $a->getSlugFromTitle();
+            $a->save();
+        }
+        redirect()->action('HomeController@index');
+    }
+
 }
