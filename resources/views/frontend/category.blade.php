@@ -28,7 +28,7 @@
 	</section>
 	<section class="lista-productos">
 		@foreach($articles as $a)
-		<a href="/product/{{ $a->id }}">
+		<a href="/product/view/{{ $a->slug }}">
 			<article class="{{ strtolower(implode(" ", str_replace(" ", "-", $a->subcategories->pluck('name')->all()))) }} article-item">
 			{{-- <article class="{{ strtolower($a->subcategories->pluck('name')->implode(' ')) }} article-item"> --}}				
 				<div class="circulo-azul"></div>

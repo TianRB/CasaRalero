@@ -7,13 +7,13 @@
 	<article>
 		<div class="imagenes-ficha-tecnica imagenes-ficha-tecnica-movil">
 			<figure class="imagen-principal">
-				<img src="../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}">
+				<img src="../../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}">
 			</figure>
 			<div class="miniaturas">
-				<figure><img src="img/productos/min-uno.jpg" alt=""></figure>
-				<figure><img src="img/productos/min-dos.jpg" alt=""></figure>
-				<figure><img src="img/productos/min-tres.jpg" alt=""></figure>
-				<figure class="img-seleccionada"><img src="img/productos/min-cuatro.jpg" alt=""></figure>
+				<figure><img src="../../img/productos/min-uno.jpg" alt=""></figure>
+				<figure><img src="../../img/productos/min-dos.jpg" alt=""></figure>
+				<figure><img src="../../img/productos/min-tres.jpg" alt=""></figure>
+				<figure class="img-seleccionada"><img src="../../img/productos/min-cuatro.jpg" alt=""></figure>
 			</div>
 		</div>
 		<div class="texto-ficha-tecnica">
@@ -41,11 +41,11 @@
 		</div>
 		<div class="imagenes-ficha-tecnica imagenes-ficha-tecnica-desktop">
 			<figure class="imagen-principal">
-				<img src="../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}">
+				<img src="../../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}">
 			</figure>
 			<div class="miniaturas">
 				@foreach($main->pics as $pic)
-					<figure><img src="../{{ $pic->path }}" alt="{{ $main->title }}"></figure>
+					<figure><img src="../../{{ $pic->path }}" alt="{{ $main->title }}"></figure>
 				@endforeach
 			</div>
 		</div>
@@ -62,11 +62,11 @@
 	<section class="otros-productos">
 		<h2>Productos similares</h2>
 		@foreach($related as $a)
-		<a href="/product/{{ $a->id }}">
+		<a href="/product/view/{{ $a->slug }}">
 			<article>
 				<div class="circulo-azul"></div>
 				<figure>
-					<img src="../{{ $a->one_pic->pluck('path')->pop() }}" alt="{{ $a->title }}">
+					<img src="../../{{ $a->one_pic->pluck('path')->pop() }}" alt="{{ $a->title }}">
 				</figure>
 				<div class="texto-articulo">
 					<h2>{{ $a->title }}</h2>
