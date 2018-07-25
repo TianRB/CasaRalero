@@ -41,15 +41,21 @@
 		</div>
 		<div class="imagenes-ficha-tecnica imagenes-ficha-tecnica-desktop">
 			<figure class="imagen-principal">
-				<img src="../../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}">
+				<img src="../../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}" id="img-main">
 			</figure>
 			<div class="miniaturas">
 				@foreach($main->pics as $pic)
-					<figure><img src="../../{{ $pic->path }}" alt="{{ $main->title }}"></figure>
+					<figure><img src="../../{{ $pic->path }}" alt="{{ $main->title }}" class="img-mini"></figure>
 				@endforeach
 			</div>
 		</div>
-	</article>	
+	</article>
+	<script>
+	$('.img-mini').on('click', function() {
+         var newSource = $(this).attr('src');
+         $("#img-main").attr("src",newSource); 
+	});
+	</script>
 </section>
 <!-- ****************  TERMINA CONTENEDOR PRODUCTO  **************** -->
 
