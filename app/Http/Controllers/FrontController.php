@@ -23,45 +23,35 @@ class FrontController extends Controller
 
     public function category($category)
     {
-        $sub = Subcategory::all();
+      $sub = Subcategory::all();
         switch ($category) {
-
-            case 'muebles':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Muebles'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'silleria':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Silleria'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'archivo':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Archivo'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'cafeteria-y-hoteleria':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Cafetería y Hotelería'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'sofas-y-espera':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'SofasEspera'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'recepciones':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Recepciones'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'accesorios':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Accesorios'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
+          case 'muebles':
+            $cat_name = 'Muebles'; break;
+          case 'silleria':
+            $cat_name = 'Silleria'; break;
+          case 'archivo':
+            $cat_name = 'Archivo'; break;
+          case 'cafeteria-y-hoteleria':
+            $cat_name = 'Cafetería y Hotelería'; break;
+          case 'sofas-y-espera':
+            $cat_name = 'Sofás y Espera'; break;
+          case 'recepciones':
+            $cat_name = 'Recepciones'; break;
+          case 'accesorios':
+            $cat_name = 'Accesorios'; break;
+          default:
+            $cat_name = '';
         }
+        $articles = Article::whereHas('categories', function($query) use ($cat_name) {
+            $query->where('categories.name', $cat_name); })->get();
+
+        //Obtener todos los id de artículos
+        $article_ids = collect($articles)->pluck('id');
+        //Obtener todas las Subcategorias relacionadas con los Articulos
+        $sub = Subcategory::whereHas('articles', function($query) use ($article_ids) {
+            $query->whereIn('articles.id', $article_ids);
+        })->get();
+        return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
     }
 
     public function showArticles()
@@ -108,7 +98,7 @@ class FrontController extends Controller
         {
            return ($current->id != $a->id);
         });
-        
+
         //dd($filtered_articles);
       } else {
         dd('Not an array (bad url parameter)');
@@ -138,7 +128,7 @@ class FrontController extends Controller
         {
            return ($current->slug != $a->slug);
         });
-        
+
         //dd($filtered_articles);
       } else {
         dd('Not an array (bad url parameter)');
