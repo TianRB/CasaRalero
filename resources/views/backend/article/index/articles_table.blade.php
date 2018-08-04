@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
  @foreach($articles as $a)
-    <div class="col-md-5">
+    <div class="col-md-4">
 
        <div class="card article container {{ strtolower($a->subcategories->pluck('name')->implode(' ')) }}">
            <div class="card-header">
@@ -22,7 +22,7 @@
              <div class="col-md-5">
                <p>Categorías:</p>
                <small>{{ $a->categories->pluck('name')->implode(', ') }}</small>
-             </div>
+             </div>-
              <div class="col-md-5">
                <p>Subcategorías:</p>
                <small>{{ $a->subcategories->pluck('name')->implode(', ') }}</small>

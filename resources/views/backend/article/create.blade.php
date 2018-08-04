@@ -1,4 +1,8 @@
 @extends('backend.layouts.app')
+@section('page_styles')
+
+ {!! Html::style('css/dropzone.css') !!}
+@endsection
 @section('content')
  <!-- Navbar -->
  @include('backend.layouts.navbars.nav_expand')
@@ -13,23 +17,11 @@
 @section('page_scripts')
  <!-- CKeditor -->
  {!! Html::script('ckeditor/ckeditor.js') !!}
+ <!-- Dropzone -->
+ {!! Html::script('js/dropzone.js') !!}
  <script type="text/javascript">
  $( document ).ready(function() {
-  $("#image").on('change',function(){
-   $('#filearray').empty();
-   for (var i = 0; i < this.files.length; i++) {
-    var img = document.createElement("IMG");
-    var col = document.createElement("div");
-    var image = document.createElement("div");
-    $(col).addClass('col-md-6');
-    $(image).addClass('image');
-    img.src = window.URL.createObjectURL(this.files[i]);
-    $(image).prepend(img);
-    $(col).prepend(image);
-    $('#filearray').addClass('border border-success');
-    $('#filearray').prepend(col);
-   }
-  });
+
   });
  </script>
 @endsection

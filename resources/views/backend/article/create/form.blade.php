@@ -38,18 +38,7 @@
       </div>
      </div>
 
-     {{--
-     <div class="form-group">
-      <label for="categoria" class="col-md-4 control-label">Categoría:</label>
-      <div class="col-md-10">
-       <select multiple class="form-control" id="sel1" name="categoria[]" value="{{ old('categoria') }}">
-                                    @foreach($categories as $c)
-                                        <option value="{{ $c->id }}">{{ $c->name }}</option>
-                                    @endforeach
-                                </select>
-      </div>
-     </div>
-     --}}
+
      <div class="form-group row justify-content-center">
       <label for="subcategoria" class="col-md-10 text-left control-label">Subcategoría:</label>
       <div class="col-md-10 row">
@@ -58,33 +47,8 @@
        @endforeach
       </div>
      </div>
-     {{--
-     <div class="form-group">
-      <label for="subcategoria" class="col-md-4 control-label">Subcategoría:</label>
-      <div class="col-md-10">
-       <select multiple class="form-control" id="sel1" name="subcategoria[]" value="{{ old('subcategoria') }}">
-                                    @foreach($subcategories as $s)
-                                        <option value="{{ $s->id }}">{{ $s->name }}</option>
-                                    @endforeach
-                                </select>
-      </div>
-     </div>
-     --}}
-     <div class="form-group-file py-4 row justify-content-center">
-      <label for="imagen" class="col-md-10 text-left control-label">Imágenes:</label>
-      <div class="col-10 mb-3">
-       <div class="row p-3" id="filearray"></div>
-      </div>
-      <div class="custom-file col-md-10">
-       <input id="image" name="imagen[]" type="file" class="custom-file-input" multiple=""/>
-       <label class="custom-file-label" for="image">Seleccionar Archivo</label>
-       @if ($errors->has('imagen'))
-       <span class="help-block">
-        <small class="text-danger">{{ $errors->first('imagen') }}</small>
-       </span>
-       @endif
-      </div>
-     </div>
+
+
      <div class="form-group row justify-content-center">
       <div class="col-md-8 text-center">
        <button type="submit" class="btn btn-info">
@@ -96,5 +60,12 @@
     </form>
    </div>
   </div>
+ </div>
+ <div class="col-md-4">
+  <form action="/file-upload"
+        class="dropzone"
+        id="my-awesome-dropzone">
+        </form>
+</form>
  </div>
 </div>

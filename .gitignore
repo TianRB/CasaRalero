@@ -14,3 +14,4 @@ front-end-source/
 public/article_pictures/
 public/slider_pictures/
 *.zip
+resources/views/backend/article/index/articles_table.blade.php
