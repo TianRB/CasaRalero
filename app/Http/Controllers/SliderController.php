@@ -139,7 +139,7 @@ class SliderController extends Controller
 
        $validator = Validator::make($input, $rules, $messages);
        if ( $validator->fails() ) {
-       return redirect('sliders/create')
+       return redirect('sliders/'.$id.'/edit')
                    ->withErrors( $validator )
                    ->withInput();
         } else {  

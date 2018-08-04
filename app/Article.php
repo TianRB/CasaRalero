@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Article extends Model
 {
@@ -37,10 +38,17 @@ class Article extends Model
         return $this->pics()->take(1);
     }
 
-    public function scopeTitle($query, $title)
+    /**
+     * Get slug from title.
+     */
+    public function getSlugFromTitle()
     {
-     return $query->where("title","like","%$title%");
+        return Str::slug($this->title);
     }
 
+    public function scopeTitle($query, $title)
+    {
+        return $query->where("title","like","%$title%");
+    }
 
 }

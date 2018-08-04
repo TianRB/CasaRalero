@@ -34,7 +34,7 @@
            <div class="card-footer">
             <div class="row justify-content-around align-items-center d-flex">
              <!-- ver en sitio -->
-             <a class="btn btn-primary" href="{{ url('/showArticle/'.$a->id) }}"><i class="fas fa-globe"></i> Ver en sitio</a>
+             <a class="btn btn-primary" href="{{ url('/product/view/'.$a->slug) }}"><i class="fas fa-globe"></i> Ver en sitio</a>
              <!-- ver en backend -->
              <a class="btn btn-info" href="{{ route('articles.show',$a->id) }}"><i class="fa fa-search"></i></a>
              <!-- editar -->

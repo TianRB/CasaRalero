@@ -13,5 +13,7 @@ yarn-error.log
 front-end-source/
 public/article_pictures/
 public/slider_pictures/
+public/img/
+casaralero.sql
 *.zip
 resources/views/backend/article/index/articles_table.blade.php

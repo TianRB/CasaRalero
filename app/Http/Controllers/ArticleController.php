@@ -161,7 +161,17 @@ class ArticleController extends Controller
             $a->save();
             $a->categories()->sync($request->input('categoria'));
             $a->subcategories()->sync($request->input('subcategoria'));
-            if ($request->imagen) {
+            if ($request->imagen) {  //  Si hay imágenes
+                // Obtener todas las imagenes viejas
+                $pics = Pic::where('article_id', $a->id)->get();
+                // Eliminar todas las imagenes viejas de BD
+                foreach ($pics as $p) {
+                    $file = $p->path;
+                    $filename = public_path($file);
+                    File::delete($filename);
+                    $p->delete();
+                }
+
                 foreach ($request->imagen as $image) {
                     //  Crear Imagen
                     $name = str_replace(' ', '', strtolower($input['title']));
@@ -186,12 +196,14 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $a = Article::find($id);
-        if ($a->image != null) {
-         $file = $a->image;
-         $filename = public_path($file);
-         File::delete($filename);
-        }
-        $a->delete();
+        $pics = Pic::where('article_id',$a->id)->get();
+        foreach ($pics as $p) {
+            $file = $p->path;
+            $filename = public_path($file);
+            File::delete($filename);
+            $a->delete();
+       }
+        
         return redirect('articles/');
     }
 

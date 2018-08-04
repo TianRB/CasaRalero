@@ -9,7 +9,6 @@ use App\Subcategory;
 use App\Message;
 use App\Mail\NewMessage;
 use App\Mail\RecievedMessage;
-
 use Mail;
 use Validator;
 
@@ -88,26 +87,67 @@ class FrontController extends Controller
         }
         return view('front', ['articles' => $articles]);
     }
+
     public function showArticle($article_id)
     {
-        //dd('success');
-        // Decode JSON to PHP array
-        $a = Article::find($article_id);
+      // Decode JSON to PHP array
+      $a = Article::find($article_id);
     	$category = json_decode($a->categories()->get());
-        // If it's an array
-        if (is_array($category)){
-            //Obtener todos los id de categoria
-            $category_ids = collect($category)->pluck('id');
-            $articles = Article::whereHas('categories', function($query) use ($category_ids) {
-                // Assuming your category table has a column id
-                $query->whereIn('categories.id', $category_ids);
-            })->get();
-        } else {
-            dd('Not an array (bad url parameter)');
-        }
+      // If it's an array
+      if (is_array($category)){
+        //Obtener todos los id de categoria
+        $category_ids = collect($category)->pluck('id');
+
+        $articles = Article::whereHas('categories', function($query) use ($category_ids) {
+          // Assuming your category table has a column id
+          $query->whereIn('categories.id', $category_ids);
+        })->get();
+
+        // Excluye el artículo que estás viendo
+        $filtered_articles = $articles->filter(function ($current, $key) use ($a)
+        {
+           return ($current->id != $a->id);
+        });
+        
+        //dd($filtered_articles);
+      } else {
+        dd('Not an array (bad url parameter)');
+      }
         //dd($articles);
-        return view('frontend.article', ['main' => $a, 'related' => $articles]);
+        return view('frontend.article', ['main' => $a, 'related' => $filtered_articles]);
     }
+
+    public function articleBySlug($article_slug)
+    {
+      // Decode JSON to PHP array
+      $a = Article::where('slug', $article_slug)->get()->pop();
+      //dd($a);
+      $category = json_decode($a->categories()->get());
+      // If it's an array
+      if (is_array($category)){
+        //Obtener todos los id de categoria
+        $category_ids = collect($category)->pluck('id');
+
+        $articles = Article::whereHas('categories', function($query) use ($category_ids) {
+          // Assuming your category table has a column id
+          $query->whereIn('categories.id', $category_ids);
+        })->get();
+
+        // Excluye el artículo que estás viendo
+        $filtered_articles = $articles->filter(function ($current, $key) use ($a)
+        {
+           return ($current->slug != $a->slug);
+        });
+        
+        //dd($filtered_articles);
+      } else {
+        dd('Not an array (bad url parameter)');
+      }
+        //dd($articles);
+        return view('frontend.articleBySlug', ['main' => $a, 'related' => $filtered_articles]);
+    }
+
+
     public function messagesend(Request $request)
     {
       $input = $request->all();
@@ -122,7 +162,7 @@ class FrontController extends Controller
           'name.required' => 'El campo "nombre" es obligatorio.',
           'name.max' => 'El nombre debe tener de menos de 64 caracteres.',
           'email.required' => 'el campo "email" es obligatorio',
-           'email.email' => 'La el correo no es una dirección válida.',
+          'email.email' => 'La el correo no es una dirección válida.',
           'phone.required' => 'El campo "Teléfono" es obligatorio',
           'phone.numeric' => 'El campo "Teléfono" debe contener sólo números.'
       ];
