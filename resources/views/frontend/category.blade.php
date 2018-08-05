@@ -29,7 +29,7 @@
 	<section class="lista-productos">
 		@foreach($articles as $a)
 		<a href="/product/view/{{ $a->slug }}">
-			<article class="{{ strtolower(implode(" ", str_replace(" ", "-", $a->subcategories->pluck('name')->all()))) }} article-item">
+			<article class="{{ strtolower(implode(" ", str_replace(" ", "-", $a->subcategories->pluck('name')->all()))) }} article-item" style="display: inline-block;">
 			{{-- <article class="{{ strtolower($a->subcategories->pluck('name')->implode(' ')) }} article-item"> --}}
 				<div class="circulo-azul"></div>
 				<figure>
@@ -46,9 +46,12 @@
 <script>
 $( document ).ready(function() {
 
-$( ".subcategory-checkbox-all" ).click(function() { // Cuando click en Todas
+$( ".subcategory-checkbox-all" ).click(function() { // Cuando click en checkbox Todas
 		$('.article-item').removeClass('hidden');		// Quita hidden de todos los artículos
-		$(".subcategory-checkbox").prop('checked', false); // Quita palomita de todos los checkboxes
+		$('.subcategory-checkbox').prop('checked', false); // Quita palomita de todos los checkboxes
+		// Las siguientes líneas son para visibilidad de articulos resultantes
+		$('.article-item').fadeTo(0,0); // Hace articulos transparentes
+		$('.article-item').fadeTo("fast",1); // Hace visibles los artículos gradualmente
 });
 
 $( ".subcategory-checkbox" ).click(function() { // Cuando click en checkbox subcategoria
@@ -59,13 +62,17 @@ $( ".subcategory-checkbox" ).click(function() { // Cuando click en checkbox subc
 			$(".subcategory-checkbox-all").prop('checked', false);	//Quita palomita a checkbox de 'Todas'
 			$("input[class='subcategory-checkbox']:checked").each(function () {	// Por cada checkbox de subcategoría que tenga palomita
 				var cssClass = $(this).siblings('span').html().toLowerCase().replace(/\W+/g, '-');	// Obtiene nombre de subcategoria y guarda en cssClass
-			//console.log('Class= '.concat(cssClass));
-			$("article.".concat(cssClass)).each(function () {	//Por cada artículo con cssClass
-				//console.log($(this));
-				$(this).removeClass('hidden');	// Quita clase hidden
+				//console.log('Class= '.concat(cssClass));
+				$("article.".concat(cssClass)).each(function () {	//Por cada artículo con cssClass
+					//console.log($(this));
+					$(this).removeClass('hidden');	// Quita clase hidden
+				});
 			});
-		});
 		}
+		// Las siguientes líneas son para visibilidad de articulos resultantes
+		$('.article-item').fadeTo(0,0); // Hace articulos transparentes
+		$('.article-item').fadeTo("fast",1); // Hace visibles los artículos gradualmente
+
 });
 
 
