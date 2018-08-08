@@ -105,7 +105,7 @@ class SubcategoryController extends Controller
         ];
        $validator = Validator::make($input, $rules, $messages);
        if ( $validator->fails() ) {
-       return redirect('subcategories/create')
+       return redirect('subcategories/'.$id.'/edit')
                    ->withErrors( $validator )
                    ->withInput();
         } else {  
@@ -113,7 +113,8 @@ class SubcategoryController extends Controller
             $subcat->name = $request->input('nombre');
             $subcat->save();
         }
-        return redirect('subcategories/');    }
+        return redirect('subcategories/');    
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -124,6 +125,7 @@ class SubcategoryController extends Controller
     public function destroy($id)
     {
         $c = Subcategory::find($id);
-        //$c->delete();
+        $c->delete();
+        return redirect('subcategories/');    
     }
 }
