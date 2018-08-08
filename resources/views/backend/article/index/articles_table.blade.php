@@ -12,7 +12,11 @@
             <div class="row justify-content-center">
              <div class="col-md-12">
                <div class="image" style="height:400px;">
-                <img src="{{ url($a->one_pic->pluck('path')->pop()) }}" alt="{{ $a->title }}">
+                @if ($a->pics->count() > 0)
+                  <img src="{{ url($a->one_pic->pluck('path')->pop()) }}" alt="{{ $a->title }}">
+                @else
+                  <img src="{{ asset('img/default.jpg') }}" alt="{{ $a->title }}">
+                @endif
                </div>
              </div>
             </div>

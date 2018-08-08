@@ -5,8 +5,13 @@
     <div class="row align-items-start">
      <div class="col-md-4">
       <div class="image" style="height:400px;">
-       <img src="{{ url($article->one_pic->pluck('path')->pop()) }}" alt="{{ $article->title }}">
+      @if ($article->pics->count() > 0)
+        <img src="{{ url($article->one_pic->pluck('path')->pop()) }}" alt="{{ $article->title }}">
+      @else
+        <img src="{{ asset('img/default.jpg') }}" alt="{{ $article->title }}">
+      @endif
       </div>
+      <a href="{{route('article.pictures',$article->id)}}" class="btn btn-info">Editar imágenes</a>
      </div>
      <div class="col-md-6">
       <h2>{{$article->title}}</h2>

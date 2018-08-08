@@ -55,8 +55,6 @@ class ArticleController extends Controller
         $rules = [
          'title' => 'unique:articles|required|max:255',
          'contenido' => 'required',
-         'imagen' => 'required',
-         'imagen.*' => 'mimes:jpeg,png,jpg|max:400'
         ];
         $messages = [
             'title.unique' => 'Ya existe un Atrículo con este nombre',
@@ -81,19 +79,7 @@ class ArticleController extends Controller
             $a->save();
             $a->categories()->sync($request->input('categoria'));
             $a->subcategories()->sync($request->input('subcategoria'));
-            foreach ($request->imagen as $image) {
-                //  Crear Imagen
-                //$file = Input::file('imagen');
-                //dd($image);
-                $name = str_replace(' ', '', strtolower($input['title']));
-
-                $file_name = $name.str_random(6).'.'.$image->getClientOriginalExtension();
-                $pic = new Pic;
-                $pic->path = 'article_pictures/'.$file_name;
-                $image->move('article_pictures/', $file_name);
-                $a->pics()->save($pic);
-            }
-            return redirect('articles/');
+            return redirect()->route('article.pictures',$a->id);
         }
     }
 
@@ -203,7 +189,7 @@ class ArticleController extends Controller
             File::delete($filename);
             $a->delete();
        }
-        
+
         return redirect('articles/');
     }
 

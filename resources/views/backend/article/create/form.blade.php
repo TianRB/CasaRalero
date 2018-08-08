@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
- <div class="col-md-8">
+ <div class="col-md-10">
   <div class="panel panel-default card">
    <div class="panel-body card-body pt-5">
     <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('articles.store') }}">
@@ -61,11 +61,5 @@
    </div>
   </div>
  </div>
- <div class="col-md-4">
-  <form action="/file-upload"
-        class="dropzone"
-        id="my-awesome-dropzone">
-        </form>
-</form>
- </div>
+
 </div>

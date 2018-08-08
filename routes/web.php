@@ -26,7 +26,9 @@ Route::get('/sendmessage'			, 'FrontController@messagesend')->name('send.message
 // Rutas para Admin
 Route::get('/dashboard'			, 'HomeController@index')->name('home');
 Route::resource('articles'		, 'ArticleController');
+Route::get('article/pictures/{id}', ['uses' => 'PicController@articlePics','as' => 'article.pictures']);
 Route::resource('categories'	, 'CategoryController');
+Route::resource('pictures', 'PicController');
 Route::resource('subcategories'	, 'SubcategoryController');
 Route::resource('sliders'		, 'SliderController');
 Route::post('articles/search'	,['uses' => 'ArticleController@searchResults', 'as' => 'articles.search']);

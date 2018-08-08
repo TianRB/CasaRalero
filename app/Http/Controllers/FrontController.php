@@ -92,7 +92,7 @@ class FrontController extends Controller
     {
       // Decode JSON to PHP array
       $a = Article::find($article_id);
-    	$category = json_decode($a->categories()->get());
+    	 $category = json_decode($a->categories()->get());
       // If it's an array
       if (is_array($category)){
         //Obtener todos los id de categoria
@@ -108,7 +108,7 @@ class FrontController extends Controller
         {
            return ($current->id != $a->id);
         });
-        
+
         //dd($filtered_articles);
       } else {
         dd('Not an array (bad url parameter)');
@@ -138,7 +138,7 @@ class FrontController extends Controller
         {
            return ($current->slug != $a->slug);
         });
-        
+
         //dd($filtered_articles);
       } else {
         dd('Not an array (bad url parameter)');
