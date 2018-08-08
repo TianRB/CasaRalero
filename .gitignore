@@ -16,4 +16,3 @@ public/slider_pictures/
 public/img/
 casaralero.sql
 *.zip
-resources/views/backend/article/index/articles_table.blade.php

@@ -1,17 +1,13 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center mt-5">
  <div class="col-md-10">
   <div class="card">
    <div class="card-body p-4">
     <div class="row align-items-start">
-     <div class="col-md-4">
-      <div class="image" style="height:400px;">
-      @if ($article->pics->count() > 0)
-        <img src="{{ url($article->one_pic->pluck('path')->pop()) }}" alt="{{ $article->title }}">
-      @else
-        <img src="{{ asset('img/default.jpg') }}" alt="{{ $article->title }}">
-      @endif
+     <div class="col-md-4 text-center">
+      <div class="article_image" style="background-image:url('@if ($article->pics->count() > 0){{ url($article->one_pic->pluck('path')->pop()) }} @else {{ asset('img/default.jpg') }} @endif');">
       </div>
-      <a href="{{route('article.pictures',$article->id)}}" class="btn btn-info">Editar imágenes</a>
+      <a href="{{route('article.pictures',$article->id)}}" class="btn btn-warning">
+       <i class="fas fa-camera-retro"></i>&nbsp;Editar imágenes</a>
      </div>
      <div class="col-md-6">
       <h2>{{$article->title}}</h2>

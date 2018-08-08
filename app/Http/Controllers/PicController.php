@@ -115,6 +115,8 @@ class PicController extends Controller
     public function articlePics($id)
     {
       $a = Article::find($id);
-      return view('backend.pics.create', ['article' => $a]);
+      return view('backend.pics.create', [
+       'article' => $a,
+      ]);
     }
 }

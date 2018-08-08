@@ -1,4 +1,4 @@
-<div class="row justify-content-center">
+<div class="row justify-content-start mt-5">
  @foreach($articles as $a)
     <div class="col-md-4">
 
@@ -11,12 +11,8 @@
            <div class="card-body">
             <div class="row justify-content-center">
              <div class="col-md-12">
-               <div class="image" style="height:400px;">
-                @if ($a->pics->count() > 0)
-                  <img src="{{ url($a->one_pic->pluck('path')->pop()) }}" alt="{{ $a->title }}">
-                @else
-                  <img src="{{ asset('img/default.jpg') }}" alt="{{ $a->title }}">
-                @endif
+               <div class="article_image" style="background-image:url('@if ($a->pics->count() > 0){{ url($a->one_pic->pluck('path')->pop()) }} @else {{ asset('img/default.jpg') }} @endif');">
+
                </div>
              </div>
             </div>
@@ -37,18 +33,25 @@
            </div>
            <div class="card-footer">
             <div class="row justify-content-around align-items-center d-flex">
-             <!-- ver en sitio -->
-             <a class="btn btn-primary" href="{{ url('/product/view/'.$a->slug) }}"><i class="fas fa-globe"></i> Ver en sitio</a>
              <!-- ver en backend -->
              <a class="btn btn-info" href="{{ route('articles.show',$a->id) }}"><i class="fa fa-search"></i></a>
              <!-- editar -->
               <a class="btn btn-warning" href="{{ route('articles.edit',$a->id) }}"><i class="fa fa-edit"></i></a>
+              <!-- Editar fotos -->
+              <a class="btn btn-warning" href="{{ route('article.pictures',$a->id) }}"><i class="fas fa-camera-retro"></i></a>
               <!-- borrar -->
               <form action="/articles/{{ $a->id }}" method="POST" class="no-margin">
               {{ csrf_field() }}
               <input type="hidden" name="_method" value="DELETE" />
               <button class="btn btn-danger" type="submit"><i class="fa fa-trash" /></i></button>
               </form>
+            </div>
+            <hr>
+            <div class="row">
+             <div class="col-12 text-center">
+              <!-- ver en sitio -->
+              <a class="btn btn-primary" href="{{ url('/product/view/'.$a->slug) }}"><i class="fas fa-globe"></i> Visualizar en sitio</a>
+             </div>
             </div>
            </div>
        </div>
