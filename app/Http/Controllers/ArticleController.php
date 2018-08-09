@@ -26,7 +26,11 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('backend.article.index', ['articles' => $articles]);
+        $categories = Category::all();
+        return view('backend.article.index', [
+         'articles' => $articles,
+         'categories' => $categories
+        ]);
     }
 
     /**
@@ -223,9 +227,11 @@ class ArticleController extends Controller
      $title = $request->title;
      //dd($title);
      $articles = Article::Title($title)->get();
+     $categories = Category::all();
      //dd($articles);
      return view('backend.article.search', [
       'articles' => $articles,
+      'categories' => $categories,
       'title' => $title
      ]);
     }

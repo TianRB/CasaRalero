@@ -52,7 +52,7 @@ class CategoryController extends Controller
        return redirect('categories/create')
                    ->withErrors( $validator )
                    ->withInput();
-        } else {  
+        } else {
             $cat = new Category;
             $cat->name = $request->input('nombre');
             $cat->save();
@@ -69,7 +69,15 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $articles = Category::find($id)->articles()->get();
+        $categories = Category::all();
+
+
+        return view('backend.article.index',[
+         'articles' => $articles,
+         'categories' => $categories
+        ]);
+
     }
 
     /**

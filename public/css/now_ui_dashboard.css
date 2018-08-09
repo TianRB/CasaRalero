@@ -5597,7 +5597,7 @@ a.fc-more:hover {
 }
 
 .form-group.no-border .form-control, .form-group.no-border .form-control+.input-group-append .input-group-text, .form-group.no-border .form-control+.input-group-prepend .input-group-text, .input-group.no-border .form-control, .input-group.no-border .form-control+.input-group-append .input-group-text, .input-group.no-border .form-control+.input-group-prepend .input-group-text {
- background-color: hsla(0, 0%, 87%, .3);
+ background-color: hsla(0, 0%, 0%, .1);
  border: medium none
 }
 
@@ -9989,7 +9989,7 @@ img {
  padding-top: 80px;
  padding-bottom: 45px;
  background: #141e30;
- background: linear-gradient(90deg, #0c2646 0, #204065 60%, #2a5788);
+ background: #0F0F11;
  position: relative;
  overflow: hidden
 }

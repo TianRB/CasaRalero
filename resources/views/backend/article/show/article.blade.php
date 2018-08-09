@@ -6,7 +6,7 @@
      <div class="col-md-4 text-center">
       <div class="article_image" style="background-image:url('@if ($article->pics->count() > 0){{ url($article->one_pic->pluck('path')->pop()) }} @else {{ asset('img/default.jpg') }} @endif');">
       </div>
-      <a href="{{route('article.pictures',$article->id)}}" class="btn btn-warning">
+      <a href="{{route('article.pictures',$article->id)}}" class="btn btn-link">
        <i class="fas fa-camera-retro"></i>&nbsp;Editar imágenes</a>
      </div>
      <div class="col-md-6">
@@ -22,12 +22,12 @@
    </div>
    <div class="card-footer">
     <div class="row justify-content-end align-items-center d-flex">
-     <a class="btn btn-primary mr-2" href="{{ url('/showArticle/'.$article->id) }}"><i class="fas fa-globe"></i>&nbsp;Ver en sitio</a>
-      <a class="btn btn-warning mr-2" href="{{ route('articles.edit',$article->id) }}"><i class="fa fa-edit" /></i>&nbsp;Editar</a>
+     <a class="btn btn-link mr-2" href="{{ url('/showArticle/'.$article->id) }}"><i class="fas fa-globe"></i>&nbsp;Ver en sitio</a>
+      <a class="btn btn-link mr-2" href="{{ route('articles.edit',$article->id) }}"><i class="fa fa-edit" /></i>&nbsp;Editar</a>
       <form action="/articles/{{ $article->id }}" method="POST" class="no-margin">
       {{ csrf_field() }}
       <input type="hidden" name="_method" value="DELETE" />
-      <button class="btn btn-danger mr-2" type="submit"><i class="fa fa-trash" /></i>&nbsp;Borrar</button>
+      <button class="btn btn-link mr-2" type="submit"><i class="fa fa-trash" /></i>&nbsp;Borrar</button>
       </form>
     </div>
    </div>

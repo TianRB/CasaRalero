@@ -26,11 +26,8 @@
 	margin:0;
 }
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #fff;
+
     opacity: 1; /* Firefox */
-}
-.form-control i{
-	 color:#fff;
 }
 
 ::-webkit-scrollbar {

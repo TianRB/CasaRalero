@@ -48,26 +48,10 @@
                           </div>
                          </div>
 
-                         <div class="form-group-file py-4 row justify-content-center">
-                          <label for="imagen" class="col-md-10 text-left control-label">Imágenes:</label>
-                          <div class="col-10 mb-3">
-                           <div class="row p-3" id="filearray"></div>
-                          </div>
-                          <div class="custom-file col-md-10">
-                           <input id="image" name="imagen[]" type="file" class="custom-file-input" multiple=""/>
-                           <label class="custom-file-label" for="image">Seleccionar Archivo</label>
-                           @if ($errors->has('imagen'))
-                           <span class="help-block">
-                            <small class="text-danger">{{ $errors->first('imagen') }}</small>
-                           </span>
-                           @endif
-                          </div>
-                         </div>
-
                          <div class="form-group row justify-content-center py-4">
                              <div class="col-md-8 text-center">
-                                 <button type="submit" class="btn btn-primary">
-                                     Enviar
+                                 <button type="submit" class="btn btn-info">
+                                     Guardar Cambios
                                  </button>
                              </div>
                          </div>

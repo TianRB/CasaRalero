@@ -31,13 +31,13 @@
 		<nav class="navegacion-principal">
 			<div class="circulo-negro"></div>
 			<ul class="menu-principal">
-				<li><a href="{{ url('/category/muebles/') }}">Muebles</a></li>
-				<li><a href="{{ url('/category/silleria/') }}">Silleria</a></li>
-				<li><a href="{{ url('/category/archivo/') }}">Archivo</a></li>
-				<li><a href="{{ url('/category/cafeteria-y-hoteleria/') }}">Cafetería y Hotelería</a></li>
-				<li><a href="{{ url('/category/sofas-y-espera/') }}">Sofas y Espera</a></li>
-				<li><a href="{{ url('/category/recepciones/') }}">Recepciones</a></li>
-				<li><a href="{{ url('/category/accesorios/') }}">Accesorios</a></li>
+				<li><a style="{{ Request::is('category/muebles') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/muebles') }}">Muebles </a></li>
+				<li><a style="{{ Request::is('category/silleria') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/silleria') }}">Silleria</a></li>
+				<li><a style="{{ Request::is('category/archivo') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/archivo') }}">Archivo</a></li>
+				<li><a style="{{ Request::is('category/cafeteria-y-hoteleria') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/cafeteria-y-hoteleria') }}">Cafetería y Hotelería</a></li>
+				<li><a style="{{ Request::is('category/sofas-y-espera') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/sofas-y-espera') }}">Sofas y Espera</a></li>
+				<li><a style="{{ Request::is('category/recepciones') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/recepciones') }}">Recepciones</a></li>
+				<li><a style="{{ Request::is('category/accesorios') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/accesorios') }}">Accesorios</a></li>
 			</ul>
 			<div class="menu-secundario">
 				<nav>

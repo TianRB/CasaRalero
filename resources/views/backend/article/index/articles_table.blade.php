@@ -1,4 +1,6 @@
-<div class="row justify-content-start mt-5">
+@include('backend.article.index.toolbar')
+
+<div class="row justify-content-start">
  @foreach($articles as $a)
     <div class="col-md-4">
 
@@ -33,24 +35,30 @@
            </div>
            <div class="card-footer">
             <div class="row justify-content-around align-items-center d-flex">
+            <div class="col-md-6">
              <!-- ver en backend -->
-             <a class="btn btn-info" href="{{ route('articles.show',$a->id) }}"><i class="fa fa-search"></i></a>
-             <!-- editar -->
-              <a class="btn btn-warning" href="{{ route('articles.edit',$a->id) }}"><i class="fa fa-edit"></i></a>
-              <!-- Editar fotos -->
-              <a class="btn btn-warning" href="{{ route('article.pictures',$a->id) }}"><i class="fas fa-camera-retro"></i></a>
-              <!-- borrar -->
+             <a class="btn btn-link" href="{{ route('articles.show',$a->id) }}"><i class="fa fa-search"></i>&nbsp;&nbsp;Detalle</a>
+             <!-- borrar -->
               <form action="/articles/{{ $a->id }}" method="POST" class="no-margin">
               {{ csrf_field() }}
               <input type="hidden" name="_method" value="DELETE" />
-              <button class="btn btn-danger" type="submit"><i class="fa fa-trash" /></i></button>
+              <button class="btn btn-link" type="submit"><i class="fa fa-trash" /></i> &nbsp;&nbsp;Eliminar</button>
               </form>
             </div>
+            <div class="col-md-6">
+             <!-- editar -->
+              <a class="btn btn-link" href="{{ route('articles.edit',$a->id) }}"><i class="fa fa-edit"></i>&nbsp;&nbsp;Editar Información</a>
+             <!-- Editar fotos -->
+             <a class="btn btn-link" href="{{ route('article.pictures',$a->id) }}"><i class="fas fa-camera-retro"></i>&nbsp;&nbsp;Editar Fotos</a>
+            </div>
+
+            </div>
+
             <hr>
             <div class="row">
              <div class="col-12 text-center">
               <!-- ver en sitio -->
-              <a class="btn btn-primary" href="{{ url('/product/view/'.$a->slug) }}"><i class="fas fa-globe"></i> Visualizar en sitio</a>
+              <a class="btn btn-link" href="{{ url('/product/view/'.$a->slug) }}"><i class="fas fa-globe"></i>&nbsp;&nbsp;Visualizar en sitio</a>
              </div>
             </div>
            </div>

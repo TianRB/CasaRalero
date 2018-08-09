@@ -24,7 +24,7 @@ Route::get('/sendmessage'			, 'FrontController@messagesend')->name('send.message
 
 
 // Rutas para Admin
-Route::get('/dashboard'			, 'HomeController@index')->name('home');
+Route::get('dashboard'			, 'HomeController@index')->name('home');
 Route::resource('articles'		, 'ArticleController');
 Route::get('article/pictures/{id}', ['uses' => 'PicController@articlePics','as' => 'article.pictures']);
 Route::resource('categories'	, 'CategoryController');

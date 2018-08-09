@@ -49,7 +49,7 @@
 				@endforeach
 			</div>
 		</div>
-	</article>	
+	</article>
 </section>
 <!-- ****************  TERMINA CONTENEDOR PRODUCTO  **************** -->
 

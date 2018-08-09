@@ -1,19 +1,19 @@
-<div class="row justify-content-center">
+@include('backend.article.index.toolbar')
+<div class="row justify-content-start">
  @if (count($articles) > 0)
   @foreach($articles as $a)
-    <div class="col-md-5">
-
+     <div class="col-md-4">
         <div class="card article container {{ strtolower($a->subcategories->pluck('name')->implode(' ')) }}">
             <div class="card-header">
               <div class="row justify-content-between align-items-center d-flex">
-                <h4 class="col-md-10">{{ $a->title }}</h4>
+                <h4 class="">{{ $a->title }}</h4>
               </div>
             </div>
             <div class="card-body">
              <div class="row justify-content-center">
               <div class="col-md-12">
-                <div class="image" style="height:400px;">
-                 <img src="{{ url($a->one_pic->pluck('path')->pop()) }}" alt="{{ $a->title }}">
+                <div class="article_image" style="background-image:url('@if ($a->pics->count() > 0){{ url($a->one_pic->pluck('path')->pop()) }} @else {{ asset('img/default.jpg') }} @endif');">
+
                 </div>
               </div>
              </div>
@@ -23,7 +23,7 @@
               <div class="col-md-5">
                 <p>Categorías:</p>
                 <small>{{ $a->categories->pluck('name')->implode(', ') }}</small>
-              </div>
+              </div>-
               <div class="col-md-5">
                 <p>Subcategorías:</p>
                 <small>{{ $a->subcategories->pluck('name')->implode(', ') }}</small>
@@ -33,20 +33,37 @@
              <hr>
             </div>
             <div class="card-footer">
-             <div class="row justify-content-end align-items-center d-flex">
-              <a class="btn btn-primary" href="{{ url('/showArticle/'.$a->id) }}"><i class="fa fa-search"></i> Ver en sitio</a>
-               <a class="btn btn-warning article-btn mx-2" href="{{ url('articles/'.$a->id.'/edit') }}"><i class="fa fa-edit" /></i></a>
+             <div class="row justify-content-around align-items-center d-flex">
+             <div class="col-md-6">
+              <!-- ver en backend -->
+              <a class="btn btn-link" href="{{ route('articles.show',$a->id) }}"><i class="fa fa-search"></i>&nbsp;&nbsp;Detalle</a>
+              <!-- borrar -->
                <form action="/articles/{{ $a->id }}" method="POST" class="no-margin">
                {{ csrf_field() }}
                <input type="hidden" name="_method" value="DELETE" />
-               <button class="btn btn-danger article-btn" type="submit"><i class="fa fa-trash" /></i></button>
+               <button class="btn btn-link" type="submit"><i class="fa fa-trash" /></i> &nbsp;&nbsp;Eliminar</button>
                </form>
+             </div>
+             <div class="col-md-6">
+              <!-- editar -->
+               <a class="btn btn-link" href="{{ route('articles.edit',$a->id) }}"><i class="fa fa-edit"></i>&nbsp;&nbsp;Editar Información</a>
+              <!-- Editar fotos -->
+              <a class="btn btn-link" href="{{ route('article.pictures',$a->id) }}"><i class="fas fa-camera-retro"></i>&nbsp;&nbsp;Editar Fotos</a>
+             </div>
+
+             </div>
+
+             <hr>
+             <div class="row">
+              <div class="col-12 text-center">
+               <!-- ver en sitio -->
+               <a class="btn btn-link" href="{{ url('/product/view/'.$a->slug) }}"><i class="fas fa-globe"></i>&nbsp;&nbsp;Visualizar en sitio</a>
+              </div>
              </div>
             </div>
         </div>
      </div>
-   @endforeach
-
+     @endforeach
  @else
   <div class="col-md-5">
    <div class="card p-5">
