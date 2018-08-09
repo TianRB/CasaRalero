@@ -158,7 +158,7 @@ class FrontController extends Controller
       ];
      $validator = Validator::make($input, $rules, $messages);
      if ( $validator->fails() ) {
-     return redirect('/#contacto')
+     return redirect()->back()
                  ->withErrors( $validator )
                  ->withInput();
       } else {
@@ -172,7 +172,7 @@ class FrontController extends Controller
        //dd($mall,$message);
        Mail::to('contacto@casaralero.com.mx')->send(new NewMessage($message));
        Mail::to($message->email)->send(new RecievedMessage($message));
-       return redirect()->route('front.index');
+       return redirect()->back();
       }
     }
 }

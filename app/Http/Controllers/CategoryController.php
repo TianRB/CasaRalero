@@ -70,11 +70,13 @@ class CategoryController extends Controller
     public function show($id)
     {
         $articles = Category::find($id)->articles()->get();
+        $category = Category::find($id);
         $categories = Category::all();
 
 
         return view('backend.article.index',[
          'articles' => $articles,
+         'category' => $category,
          'categories' => $categories
         ]);
 

@@ -6,11 +6,16 @@
  <div class="col-6 col-md-3 mb-4 m-md-0 text-right">
   <h6 class="">Filtrar Por Categoría</h6>
 <div class="dropdown w-100">
-<a class="btn btn-simple dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Todas las categorías
+<a class="btn btn-simple btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+@if (isset($category))
+ {{$category->name}}
+@else
+ Todas
+@endif
 </a>
 
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+ <a class="dropdown-item" href="{{route('articles.index')}}">Ver Todas</a>
  @foreach ($categories as $c)
   <a class="dropdown-item" href="{{route('categories.show',$c->id)}}">{{$c->name}}</a>
  @endforeach

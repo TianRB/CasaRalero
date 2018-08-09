@@ -25,17 +25,42 @@
 			</div>
 			<div class="contizacion">
 				<h3>Datos del cliente</h3>
-				<form action="" class="formulario-cotizacion">
+				<form action="{{route('send.message')}}" metohd="POST" class="formulario-cotizacion">
+					{{ csrf_field() }}
 					<ul>
-						<li><input type="text" placeholder="Nombre"></li>
-						<li><input type="text" placeholder="Apellido"></li>
-						<li><input type="text" placeholder="Ciudad"></li>
-						<li><input type="text" placeholder="Correo Electrónico"></li>
-						<li><input type="text" placeholder="Teléfono"></li>
-						<li><textarea name="" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
+						<li>
+							<input type="text" placeholder="Nombre y Apellido" name="name">
+							<br>
+							@if ($errors->has('name'))
+											<small style="color:red;">
+															<strong>{{ $errors->first('name') }}</strong>
+											</small>
+							@endif
+						</li>
+						<li>
+							<input type="text" placeholder="Correo Electrónico" name="email">
+							<br>
+							@if ($errors->has('email'))
+											<small style="color:red;">
+															<strong>{{ $errors->first('email') }}</strong>
+											</small>
+							@endif
+						</li>
+						<li>
+							<input type="text" placeholder="Teléfono" name="phone">
+							<br>
+							@if ($errors->has('phone'))
+											<small style="color:red;">
+															<strong>{{ $errors->first('phone') }}</strong>
+											</small>
+							@endif
+						</li>
+						<li>
+							<textarea id="" placeholder="¿Cómo podemos ayudarle?" name="message"></textarea>
+						</li>
 					</ul>
-					<div class="btn-enviar">enviar</div>
-					<div class="btn-regresar">regresar</div>
+					<div class=""><input type="submit" class="btn-enviar" value="Enviar"><div class="btn-regresar">regresar</div></div>
+
 				</form>
 			</div>
 		</div>
@@ -53,7 +78,7 @@
 	<script>
 	$('.img-mini').on('click', function() {
          var newSource = $(this).attr('src');
-         $("#img-main").attr("src",newSource); 
+         $("#img-main").attr("src",newSource);
 	});
 	</script>
 </section>
