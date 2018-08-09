@@ -10,10 +10,9 @@
 				<img src="../../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}">
 			</figure>
 			<div class="miniaturas">
-				<figure><img src="../../img/productos/min-uno.jpg" alt=""></figure>
-				<figure><img src="../../img/productos/min-dos.jpg" alt=""></figure>
-				<figure><img src="../../img/productos/min-tres.jpg" alt=""></figure>
-				<figure class="img-seleccionada"><img src="../../img/productos/min-cuatro.jpg" alt=""></figure>
+				@foreach($main->pics as $pic)
+					<figure><img src="../../{{ $pic->path }}" alt="{{ $main->title }}" class="img-mini"></figure>
+				@endforeach
 			</div>
 		</div>
 		<div class="texto-ficha-tecnica">
