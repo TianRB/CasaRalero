@@ -43,7 +43,7 @@ class FrontController extends Controller
             $cat_name = '';
         }
         $articles = Article::whereHas('categories', function($query) use ($cat_name) {
-            $query->where('categories.name', $cat_name); })->get();
+            $query->where('categories.name', $cat_name); })->orderBy('title')->get();
 
         //Obtener todos los id de artículos
         $article_ids = collect($articles)->pluck('id');
@@ -56,7 +56,7 @@ class FrontController extends Controller
 
     public function showArticles()
     {
-        $articles = Article::all();
+        $articles = Article::orderBy('title');
         return view('front', ['articles' => $articles]);
     }
     public function showRelatedArticles($category)
@@ -91,7 +91,7 @@ class FrontController extends Controller
         $articles = Article::whereHas('categories', function($query) use ($category_ids) {
           // Assuming your category table has a column id
           $query->whereIn('categories.id', $category_ids);
-        })->get();
+        })->orderBy('title')->get();
 
         // Excluye el artículo que estás viendo
         $filtered_articles = $articles->filter(function ($current, $key) use ($a)
@@ -121,7 +121,7 @@ class FrontController extends Controller
         $articles = Article::whereHas('categories', function($query) use ($category_ids) {
           // Assuming your category table has a column id
           $query->whereIn('categories.id', $category_ids);
-        })->get();
+        })->orderBy('title')->get();
 
         // Excluye el artículo que estás viendo
         $filtered_articles = $articles->filter(function ($current, $key) use ($a)

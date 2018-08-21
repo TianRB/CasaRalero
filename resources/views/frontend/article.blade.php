@@ -61,7 +61,7 @@
 
 	<section class="otros-productos">
 		<h2>Productos similares</h2>
-		@foreach($related as $a)
+		@foreach($related->take(4) as $a)
 		<a href="/product/{{ $a->id }}">
 			<article>
 				<div class="circulo-azul"></div>
