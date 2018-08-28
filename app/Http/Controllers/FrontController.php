@@ -24,24 +24,33 @@ class FrontController extends Controller
     public function category($category)
     {
       $sub = Subcategory::all();
+        $image = 'cabecera-productos';
         switch ($category) {
           case 'muebles':
-            $cat_name = 'Muebles'; break;
+            $cat_name = 'Muebles';
+            $image = 'portada_muebles';break;
           case 'silleria':
-            $cat_name = 'Silleria'; break;
+            $cat_name = 'Silleria';
+            $image = 'portada_silleria';break;
           case 'archivo':
-            $cat_name = 'Archivo'; break;
+            $cat_name = 'Archivo';
+            $image = 'portada_archivo';break;
           case 'cafeteria-y-hoteleria':
-            $cat_name = 'Cafetería y Hotelería'; break;
+            $cat_name = 'Cafetería y Hotelería';
+            $image = 'portada_cafeteria-y-hoteleria';break;
           case 'sofas-y-espera':
-            $cat_name = 'Sofás y Espera'; break;
+            $cat_name = 'Sofás y Espera';
+            $image = 'portada_sofas-y-espera';break;
           case 'recepciones':
-            $cat_name = 'Recepciones'; break;
+            $cat_name = 'Recepciones';
+            $image = 'portada_recepciones';break;
           case 'accesorios':
-            $cat_name = 'Accesorios'; break;
+            $cat_name = 'Accesorios';
+            $image = 'portada_accesorios';break;
           default:
             $cat_name = '';
-        }
+            $image = '';
+   }
         $articles = Article::whereHas('categories', function($query) use ($cat_name) {
             $query->where('categories.name', $cat_name); })->orderBy('title')->get();
 
@@ -51,7 +60,7 @@ class FrontController extends Controller
         $sub = Subcategory::whereHas('articles', function($query) use ($article_ids) {
             $query->whereIn('articles.id', $article_ids);
         })->get();
-        return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
+        return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub, 'image' => $image]);
     }
 
     public function showArticles()
@@ -119,7 +128,6 @@ class FrontController extends Controller
         $category_ids = collect($category)->pluck('id');
 
         $articles = Article::whereHas('categories', function($query) use ($category_ids) {
-          // Assuming your category table has a column id
           $query->whereIn('categories.id', $category_ids);
         })->orderBy('title')->get();
 
@@ -128,6 +136,8 @@ class FrontController extends Controller
         {
            return ($current->slug != $a->slug);
         });
+        //$items = $filtered_articles->forPage($_GET['page'], 5); //Filter the page var
+        //dd($items);
 
         //dd($filtered_articles);
       } else {

@@ -4,7 +4,7 @@
 
 <!-- ****************  COMIENZA CABECERA PRODUCTOS  **************** -->
 <div class="cabecera-productos">
-	<figure><img src="../img/cabecera-productos.jpg" alt=""></figure>
+	<figure><img src="../img/{{ $image }}.jpg" alt=""></figure>
 </div>
 <!-- ****************  TERMINA CABECERA PRODUCTOS   **************** -->
 
