@@ -28,42 +28,42 @@
 		<article style="background:url('img/img-categorias/categoria-silleria.jpg')"> 
 			<div class="circulo-rojo"></div>
 			<h2>Muebles</h2>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut</p>
+			<p>Amplia gama de escritorios, mesas de justas, conjuntos ejecutivos y secretariales que harán más moderna y funcional su oficina.</p>
 		</article>
 	</a>
 	<a href="{{ url('/category/silleria/') }}">
 		<article style="background:url('img/img-categorias/categoria-escritorios.jpg')">
 			<div class="circulo-rojo"></div>
 			<h2>Silleria</h2>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut</p>
+			<p>Variedad de sillas para cada necesidad, ejecutivas, de visita, cajero y secretariales, entre otras.</p>
 		</article>
 	</a>
 	<a href="{{ url('/category/archivo/') }}">
 		<article style="background:url('img/img-categorias/categoria-mesas.jpg')">
 			<div class="circulo-rojo"></div>
 			<h2>Archivo</h2>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut</p>
+			<p>Completa línea de archiveros, credenzas, gabinetes, libreros y archiveros con caja fuerte. </p>
 		</article>
 	</a>
 	<a href="{{ url('/category/cafeteria-y-hoteleria/') }}">
 		<article style="background:url('img/img-categorias/categoria-archiveros.jpg')">
 			<div class="circulo-rojo"></div>
 			<h2>Cafetería y Hotelería</h2>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut</p>
+			<p>Tenemos todo lo necesario para tu negocio, mesas, sillas y bancos, adaptables a todo clima y lugar.</p>
 		</article>
 	</a>
 	<a href="{{ url('/category/sofas-y-espera/') }}">
 		<article style="background:url('img/img-categorias/categoria-modulos.jpg')">
 			<div class="circulo-rojo"></div>
 			<h2>Sofas y Espera</h2>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut</p>
+			<p>Funcionalidad, resistencia y modernidad, lo encuentras en nuestra línea de sofas y espera.</p>
 		</article>
 	</a>
 	<a href="{{ url('/category/recepciones/') }}">
 		<article style="background:url('img/img-categorias/categoria-recepciones.jpg')">
 			<div class="circulo-rojo"></div>
 			<h2>Recepciones</h2>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut</p>
+			<p>Contamos con recepciones para cada necesidad ya sea hospital, oficina, industria, comercio o escuela.</p>
 		</article>
 	</a>
 </div>
