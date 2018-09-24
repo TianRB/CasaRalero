@@ -7,11 +7,11 @@
 	<article>
 		<div class="imagenes-ficha-tecnica imagenes-ficha-tecnica-movil">
 			<figure class="imagen-principal">
-				<img src="../../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}">
+				<img src="{{ asset($main->one_pic->pluck('path')->pop()) }}" alt="{{ $main->title }}" id="img-main2">
 			</figure>
 			<div class="miniaturas">
 				@foreach($main->pics as $pic)
-					<figure><img src="../../{{ $pic->path }}" alt="{{ $main->title }}" class="img-mini"></figure>
+					<figure><img src="{{ asset($pic->path) }}" alt="{{ $main->title }}" class="img-mini"></figure>
 				@endforeach
 			</div>
 		</div>
@@ -31,27 +31,27 @@
 							<input type="text" placeholder="Nombre y Apellido" name="name">
 							<br>
 							@if ($errors->has('name'))
-											<small style="color:red;">
-															<strong>{{ $errors->first('name') }}</strong>
-											</small>
+								<small style="color:red;">
+									<strong>{{ $errors->first('name') }}</strong>
+								</small>
 							@endif
 						</li>
 						<li>
 							<input type="text" placeholder="Correo Electrónico" name="email">
 							<br>
 							@if ($errors->has('email'))
-											<small style="color:red;">
-															<strong>{{ $errors->first('email') }}</strong>
-											</small>
+								<small style="color:red;">
+									<strong>{{ $errors->first('email') }}</strong>
+								</small>
 							@endif
 						</li>
 						<li>
 							<input type="text" placeholder="Teléfono" name="phone">
 							<br>
 							@if ($errors->has('phone'))
-											<small style="color:red;">
-															<strong>{{ $errors->first('phone') }}</strong>
-											</small>
+								<small style="color:red;">
+									<strong>{{ $errors->first('phone') }}</strong>
+								</small>
 							@endif
 						</li>
 						<li>
@@ -65,19 +65,20 @@
 		</div>
 		<div class="imagenes-ficha-tecnica imagenes-ficha-tecnica-desktop">
 			<figure class="imagen-principal">
-				<img src="../../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}" id="img-main">
+				<img src="{{ asset($main->one_pic->pluck('path')->pop()) }}" alt="{{ $main->title }}" id="img-main">
 			</figure>
 			<div class="miniaturas">
 				@foreach($main->pics as $pic)
-					<figure><img src="../../{{ $pic->path }}" alt="{{ $main->title }}" class="img-mini"></figure>
+					<figure><img src="{{ asset($pic->path) }}" alt="{{ $main->title }}" class="img-mini"></figure>
 				@endforeach
 			</div>
 		</div>
 	</article>
 	<script>
 	$('.img-mini').on('click', function() {
-         var newSource = $(this).attr('src');
-         $("#img-main").attr("src",newSource);
+		var newSource = $(this).attr('src');
+		$("#img-main").attr("src",newSource);
+		$("#img-main2").attr("src",newSource);
 	});
 	</script>
 </section>
@@ -89,14 +90,14 @@
 
 <!-- ****************  COMIENZA OTROS PRODUCTOS  **************** -->
 
-	<section class="otros-productos">
-		<h2>Productos similares</h2>
-		@foreach($related->take(4) as $a)
+<section class="otros-productos">
+	<h2>Productos similares</h2>
+	@foreach($related->take(4) as $a)
 		<a href="/product/view/{{ $a->slug }}">
 			<article>
 				<div class="circulo-azul"></div>
 				<figure>
-					<img src="../../{{ $a->one_pic->pluck('path')->pop() }}" alt="{{ $a->title }}">
+					<img src="{{ asset($a->one_pic->pluck('path')->pop()) }}" alt="{{ $a->title }}">
 				</figure>
 				<div class="texto-articulo">
 					<h2>{{ $a->title }}</h2>
@@ -105,8 +106,8 @@
 				</div>
 			</article>
 		</a>
-		@endforeach
-	</section>
+	@endforeach
+</section>
 
 <!-- ****************  TERMINA OTROS PRODUCTOS  **************** -->
 
