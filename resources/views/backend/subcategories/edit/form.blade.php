@@ -4,8 +4,9 @@
              <div class="panel panel-default card">
 
                  <div class="panel-body card-body pt-4">
-                     <form class="form-horizontal" method="POST"  action="{{ route('subcategories.store') }}">
+                     <form class="form-horizontal" method="POST"  action="{{ url('subcategories/'.$s->id) }}">
                          {{ csrf_field() }}
+												 <input type="hidden" name="_method" value="PUT" />
 
                          <div class="form-group row justify-content-center">
                              <label for="nombre" class="col-md-10 text-left control-label">Nombre de la nueva subcategoría</label>

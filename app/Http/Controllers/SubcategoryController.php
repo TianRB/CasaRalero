@@ -40,10 +40,11 @@ class SubcategoryController extends Controller
         $input = $request->all();
 
         $rules = [
-         'nombre' => 'required|max:64|unique:subcategories,name',
+         'nombre' => 'required|max:64|unique:subcategories,name|regex:/^[\pL\s\-]+$/u',
         ];
         $messages = [
             'nombre.required' => 'El campo "nombre" es obligatorio',
+            'nombre.regex' => 'El campo "nombre" no debe contener caracteres especiales',
             'nombre.max' => 'El nombre de la subcategoría debe ser de menos de 64 caracteres',
             'nombre.unique' => 'El nombre de la subcategoría ya existe',
         ];
@@ -52,7 +53,7 @@ class SubcategoryController extends Controller
        return redirect('subcategories/create')
                    ->withErrors( $validator )
                    ->withInput();
-        } else {  
+        } else {
             $subcat = new Subcategory;
             $subcat->name = $request->input('nombre');
             $subcat->save();
@@ -96,10 +97,11 @@ class SubcategoryController extends Controller
         $input = $request->all();
 
         $rules = [
-         'nombre' => 'required|max:64|unique:subcategories,name',
+         'nombre' => 'required|max:64|unique:subcategories,name|regex:/^[\pL\s\-]+$/u',
         ];
         $messages = [
             'nombre.required' => 'El campo "nombre" es obligatorio',
+						'nombre.regex' => 'El campo "nombre" no debe contener caracteres especiales',
             'nombre.max' => 'El nombre de la subcategoría debe ser de menos de 64 caracteres',
             'nombre.unique' => 'El nombre de la subcategoría ya existe',
         ];
@@ -108,12 +110,12 @@ class SubcategoryController extends Controller
        return redirect('subcategories/'.$id.'/edit')
                    ->withErrors( $validator )
                    ->withInput();
-        } else {  
+        } else {
             $subcat = Subcategory::find($id);
             $subcat->name = $request->input('nombre');
             $subcat->save();
         }
-        return redirect('subcategories/');    
+        return redirect('subcategories/');
     }
 
     /**
@@ -126,6 +128,6 @@ class SubcategoryController extends Controller
     {
         $c = Subcategory::find($id);
         $c->delete();
-        return redirect('subcategories/');    
+        return redirect('subcategories/');
     }
 }
