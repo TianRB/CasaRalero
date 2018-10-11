@@ -38,6 +38,7 @@
 				<li><a style="{{ Request::is('category/sofas-y-espera') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/sofas-y-espera') }}">Sofas y Espera</a></li>
 				<li><a style="{{ Request::is('category/recepciones') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/recepciones') }}">Recepciones</a></li>
 				<li><a style="{{ Request::is('category/accesorios') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/accesorios') }}">Accesorios</a></li>
+				<li><a style="{{ Request::is('category/escolares') ? 'text-decoration:underline;' : '' }}" href="{{ url('category/escolares') }}">Escolares</a></li>
 			</ul>
 			<div class="menu-secundario">
 				<nav>

@@ -47,6 +47,9 @@ class FrontController extends Controller
       case 'accesorios':
       $cat_name = 'Accesorios';
       $image = 'portada_accesorios';break;
+      case 'escolares':
+      $cat_name = 'Escolares';
+      $image = 'portada_escolares';break;
       default:
       $cat_name = '';
       $image = '';
