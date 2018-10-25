@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- ****************  COMIENZA CABECERA PRODUCTOS  **************** -->
-<div class="cabecera-productos {{ $category }}">
+<div class="cabecera-productos {{ $image }}">
 
 </div>
 <!-- ****************  TERMINA CABECERA PRODUCTOS   **************** -->
