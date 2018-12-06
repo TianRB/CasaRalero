@@ -183,7 +183,8 @@ class FrontController extends Controller
         ]);
         //$mall = Message::all();
         //dd($mall,$message);
-        Mail::to('contacto@casaralero.com.mx')->send(new NewMessage($message));
+        Mail::to('direccion@casaralero.com.mx')->send(new NewMessage($message));
+        Mail::to('croficinasyespacios@yahoo.com.mx')->send(new NewMessage($message));
         Mail::to($message->email)->send(new RecievedMessage($message));
         return redirect()->back();
       }
