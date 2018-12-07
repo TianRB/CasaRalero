@@ -8,8 +8,12 @@
 <br>
 Comunícate con {{$message->name}}: <br>
 **Correo:** {{$message->email}} <br>
-**Teléfono:** {{$message->phone}}
-
+**Teléfono:** {{$message->phone}} <br>
+@if ($message->article)
+	**Artículo Seleccionado:** {{$message->article}}
+@endif
+<br><br>
 **Atentamente**,<br>
-{{ config('app.name') }}
+Casa Ralero
+
 @endcomponent

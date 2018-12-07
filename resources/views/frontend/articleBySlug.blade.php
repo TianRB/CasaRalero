@@ -26,6 +26,7 @@
 				<h3>Datos del cliente</h3>
 				<form action="{{route('send.message')}}" metohd="POST" class="formulario-cotizacion">
 					{{ csrf_field() }}
+					<input type="hidden" name="article" value="{{$main->title}}">
 					<ul>
 						<li>
 							<input type="text" placeholder="Nombre y Apellido" name="name">

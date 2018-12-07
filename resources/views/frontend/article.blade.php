@@ -33,7 +33,8 @@
 							<li><input type="text" placeholder="Teléfono" name="phone"></li>
 							<li><textarea name="message" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
 						</ul>
-						<input type="submit" class="btn-enviar" value="Enviar">					<div class="btn-regresar">regresar</div>
+						<input type="submit" class="btn-enviar" value="Enviar">
+						<div class="btn-regresar">regresar</div>
 					</form>
 				</div>
 			</div>

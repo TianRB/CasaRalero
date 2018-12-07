@@ -10,6 +10,6 @@ class Message extends Model
     use Notifiable;
 
     protected $fillable = [
-     'name', 'email', 'phone', 'message',
+     'article', 'name', 'email', 'phone', 'message',
  ];
 }

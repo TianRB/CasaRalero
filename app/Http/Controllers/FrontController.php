@@ -181,8 +181,14 @@ class FrontController extends Controller
           'email' => $input['email'],
           'message' => $input['message']
         ]);
+				if (isset($input['article'])) {
+					$message->article = $input['article'];
+				}
+				//dd( $message );
         //$mall = Message::all();
         //dd($mall,$message);
+
+				//dd( 'End of messagesend' );
         Mail::to('direccion@casaralero.com.mx')->send(new NewMessage($message));
         Mail::to('croficinasyespacios@yahoo.com.mx')->send(new NewMessage($message));
         Mail::to($message->email)->send(new RecievedMessage($message));

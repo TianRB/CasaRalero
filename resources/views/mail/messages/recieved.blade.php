@@ -10,5 +10,5 @@ En breve un operador se pondrá en contacto y resolverá todas tus dudas.
 
 
 Atentamente,<br>
-{{ config('app.name') }}
+Casa Ralero
 @endcomponent
