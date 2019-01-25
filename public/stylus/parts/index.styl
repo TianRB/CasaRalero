@@ -1,0 +1,285 @@
+.contenedor-slide
+	width 100%
+	margin 0 auto 
+	max-width 1800px
+	height 380px
+	position relative
+	.s_element
+		opacity 0
+		transition all .5s 
+		position absolute
+		z-index 0
+	.s_visible
+		opacity 1
+		z-index 2
+	.nav-slide
+		position absolute
+		top 120px
+		width 100%
+		text-align center
+		z-index 10
+		ul 
+			#btnAnt
+				left 0px
+			#btnSig
+				right 0px
+			li 
+				width 40px 
+				height 40px 
+				border-radius 50%
+				border 1px solid rojo-ralero
+				background azul-ralero
+				position absolute
+				margin-right 10px
+				cursor pointer
+				margin 0
+				list-style none
+				span 
+					display block
+					font-size 2rem
+					color #fff
+					position absolute
+					top 5px 
+					left 5px
+	article
+		width 100%
+		height 100%
+		position absolute
+		.texto-slide
+			position absolute
+			width 80%
+			left 10%
+			top 160px
+			text-align center
+			h2 
+				width 90%
+				padding 20px 5%
+				margin 0 auto
+				background rojo-ralero
+				color #fff
+				text-transform uppercase
+				font-size 1.5rem
+				line-height 2rem
+				font-weight 100
+				box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+			p
+				font-size 1.2rem
+				line-height 1.5rem 
+				color azul-ralero
+				margin-top 10px
+			a 
+				text-decoration none
+				margin 0 auto !important
+				width 140px
+				display block
+			.btn-slide
+				width 140px
+				height 40px 
+				line-height 40px 
+				font-size 1.2rem
+				font-weight 100
+				margin-top 10px 
+				text-transform uppercase
+				color azul-ralero
+				text-align center
+				border 1px solid rojo-ralero
+				border-radius 20px
+		figure 
+			height 200px
+			width 100%
+			overflow hidden
+			img 
+				width 100%
+				height auto
+.mosaicos-index
+	width 100%
+	text-align center
+	font-size 0
+	margin-top 50px
+	article
+		width 45.5%
+		position relative
+		margin-bottom 3%
+		height 0
+		padding-top 60%
+		background-repeat no-repeat !important
+		background-size cover !important
+		display inline-block
+		vertical-align top
+	a	
+		&:nth-child(odd)
+			margin-right 3%
+		.circulo-rojo
+			display none
+		h2
+			background rgba(227, 19, 32, 1)
+			color #fff 
+			font-size 1rem
+			font-weight 100
+			left 50%
+			margin-left -80px
+			margin-top -15px
+			height 30px
+			line-height 30px
+			position absolute
+			text-transform uppercase
+			top 50%
+			width 160px
+			transition all .3s
+		p 
+			display none
+.contenedor-video
+	width 90%
+	margin 0px auto 
+	padding 30px 0
+	h3
+		font-size 2rem
+		margin 0px auto 
+		padding 50px 0
+		text-align center
+		text-transform uppercase
+		font-weight 400
+		color gris-texto
+	.video-index 
+		height 0
+		overflow hidden
+		padding-top 30px
+		padding-bottom 52.45%
+		position relative
+		iframe 
+			height 100%
+			left 0
+			position absolute
+			top 0 
+			width 100%
+@media screen and (min-width: 1310px)
+	.contenedor-slide
+		height 500px
+		position fixed
+		z-index 0
+		.nav-slide
+			position absolute
+			width 100px
+			bottom 80px
+			top initial
+			left 1%
+			margin-left 30px
+		article
+			font-size 0
+			overflow hidden
+			.texto-slide
+				width 35%
+				position absolute
+				margin-top 80px
+				margin-left 1%
+				top 0
+				left 0 !important
+				text-align left
+				h2 
+					font-size 2.5rem
+					line-height 3.3rem 
+					font-weight 300
+					padding 10px 20px
+					width 100%
+					color #fff
+					text-transform uppercase
+					background rojo-ralero
+				p 
+					font-size 1.5rem
+					line-height 2.5rem 
+					font-weight 300
+					color #203d6e
+					width 400px
+					padding-left 20px
+					margin-top 20px
+				a 
+					text-decoration none
+					margin-left 20px !important
+			figure 
+				width 75%
+				height 100%
+				margin-left 35%
+				display inline-block
+				vertical-align top 
+				overflow hidden
+				img 
+					width 100%
+					height auto
+	.mosaicos-index
+		max-width 1800px
+		margin 0 auto
+		margin-top 500px
+		font-size 0
+		border-top 5px solid azul-ralero
+		z-index 2
+		position relative
+		background #fff 
+		padding-top 1%
+		article
+			width 32%
+			padding-top 40%
+			cursor pointer
+			margin-bottom 1%
+			overflow hidden
+			box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+			transition all 0.3s cubic-bezier(.25,.8,.25,1)
+		a	
+			&:nth-child(odd)
+				margin-right initial
+			&:nth-child(3n+2)
+				margin-right 1%
+				margin-left 1%
+			h2
+				font-size 1.5rem
+				width 260px
+				margin-left -130px
+				height 40px
+				line-height 40px
+				margin-top -20px
+			p 
+				font-size 1rem
+				color #fff
+				position absolute
+				top 52%
+				left 15%
+				width 70%
+				opacity 0
+				transition all 1s .3s
+				display block 
+			.circulo-rojo
+				background rgba(227, 19, 32, 1)
+				border-radius 50%
+				height 1000px
+				left 50%
+				margin-left -500px
+				margin-top -500px
+				position absolute
+				top 50%
+				width 1000px
+				transform scale(0)
+				transition all .7s
+				transform-origin 50% 50%
+				display block
+			&:hover 
+				box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+				h2
+					background rgba(227, 19, 32, 0) !important
+					margin-top -50px
+				.circulo-rojo
+					transform scale(1)
+					background rgba(227, 19, 32, .8) !important
+				p 
+					opacity 1
+					top 50%
+	.contenedor-video
+		width 100%				
+		background #fff
+		position relative
+		.video-index
+			max-width 1300px
+			margin 0 auto
+
+
+
+
+

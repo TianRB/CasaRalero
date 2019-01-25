@@ -12,11 +12,7 @@
 
 <!-- ****************  COMIENZA CONTENEDOR PRODUCTOS  **************** -->
 <section class="contenedor-productos">
-	<form class="" method="POST" id="searchFilter" action="{{ route('front.search', $category) }}">
-		{{ csrf_field() }}
-		<input class="buscador" type="text" value="" name="search" placeholder="Buscar Producto" autocomplete="off">
-		<button class="hidden" type="submit"></button>
-	</form>
+	
 	<section class="check-subcategorias">
 		<ul>
 			<label class="material-checkbox">

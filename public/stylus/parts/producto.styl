@@ -1,0 +1,326 @@
+.producto-elegido
+	width 90%
+	margin 0 auto 
+	position relative
+	z-index 10
+	article
+		width 100%
+		.texto-ficha-tecnica
+			margin-top 30px
+			h1
+				font-size 2rem
+				margin-bottom 10px
+				color azul-ralero
+			p, ul 
+				font-size 1rem
+				line-height 1.4rem
+				color gris-texto
+			ul 
+				margin-left 20px
+			a 
+				text-decoration none
+			.btn-ficha-tecnica
+				padding 5px 10px
+				height 30px 
+				line-height 30px 
+				margin 0 auto 
+				border-radius 20px
+				color #fff	
+				text-transform uppercase
+				font-weight 400
+				font-size 1rem
+				display inline-block
+				vertical-align top
+				cursor pointer
+				margin-top 30px
+			.btn-uno
+				width 160px
+				text-align center
+				background rojo-ralero
+				color #fff
+				box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+				transition all 0.3s cubic-bezier(.25,.8,.25,1)
+				&:hover 
+					box-shadow 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22)
+			.btn-dos
+				width 80px
+				text-align center
+				margin-left 10px
+				border 1px solid azul-ralero
+				color azul-ralero
+		.contizacion
+			margin-top 30px
+			display none
+		.formulario-cotizacion
+			width 100%
+			margin 0 auto
+			padding 30px 0
+			background-color #fff
+			position relative 
+			z-index 1
+			ul 
+				width 100%
+				margin 0 auto
+				li 
+					list-style none
+					height 40px
+					margin-bottom 15px
+					input,textarea 
+						display block
+						font-size 1rem
+						width 100%
+						border 0
+						padding 10px 5px
+						background white no-repeat
+						background-image linear-gradient(to bottom, #1abc9c, #1abc9c), linear-gradient(to bottom, silver, silver)
+						background-size 0 2px, 100% 1px
+						background-position 50% 100%, 50% 100%
+						transition background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1)
+					input:focus, textarea:focus
+						background-size 100% 2px, 100% 1px
+						outline none
+			.btn-enviar, .btn-regresar
+				display inline-block
+				vertical-align top
+				width 100px
+				height 30px 
+				line-height 30px
+				border-radius 15px
+				font-size 1rem
+				font-weight 100
+				text-transform uppercase
+				margin-left 0%
+				text-align center
+				margin-top 40px
+				cursor pointer
+			.btn-enviar
+				background rojo-ralero
+				color #fff
+				box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+				transition all 0.3s cubic-bezier(.25,.8,.25,1)
+				&:hover 
+					box-shadow 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22)
+			.btn-regresar
+				border 1px solid azul-ralero
+				color azul-ralero
+				margin-left 15px
+		.imagenes-ficha-tecnica-desktop
+			display none
+		.imagenes-ficha-tecnica
+			font-size 0
+			margin-top 50px
+			.imagen-principal
+				width 65%
+				display inline-block
+				vertical-align top 
+				overflow hidden
+				img 
+					width 100%
+					height auto
+			.miniaturas
+				width 35%
+				display inline-block
+				vertical-align top 
+				padding-top 30px
+				figure 
+					width 50px
+					height 50px
+					overflow hidden
+					display inline-block
+					vertical-align top 
+					margin-bottom 10px
+					&:nth-child(odd)
+						margin-right 10px
+					img 
+						width 50px
+						height auto 
+				.img-seleccionada
+					border 1px solid azul-ralero
+.otros-productos
+	width 100%
+	margin-bottom 50px
+	transition all .5s
+	text-align center
+	h2 
+		font-size 2rem 
+		margin 40px 0
+		color gris-texto
+	article
+		width 45%
+		display inline-block
+		vertical-align top
+		border-top 1px dashed gris-clarito
+		padding 20px 0
+		cursor pointer
+		&:nth-child(1)
+			border-top 0px dashed gris-clarito
+		&:nth-child(2)
+			border-top 0px dashed gris-clarito
+		figure 
+			width 100%
+			height auto
+			margin 0 auto 
+			overflow hidden
+			img 
+				width 100%
+				height auto
+		h2
+			font-size 1rem
+			line-height 1.3rem
+			text-transform uppercase
+			font-weight 700
+			color azul-ralero
+			text-align center
+		p, ul 
+			font-size .9rem
+			color gris-texto  
+			display none
+	
+
+@media screen and (min-width: 1000px)
+	.producto-elegido
+		font-size 0
+		position relative
+		z-index 0
+		width 1200px
+		maring 0 auto
+		article
+			padding-bottom 40px
+			.texto-ficha-tecnica
+				width 40%
+				display inline-block
+				vertical-align top
+				margin-top 80px
+				position relative
+				.contizacion
+					margin-top 50px
+				.caja-descripcion-articulo
+					position absolute
+					h1
+						font-size 2.5rem
+						font-weight 700
+						margin-bottom 20px
+					p 
+						font-size 1rem
+						line-height 1.8rem
+					.btn-ficha-tecnica
+						height 50px 
+						line-height 50px 
+						border-radius 25px
+						padding 0px 10px 
+						font-size 1.2rem 
+						margin-top 50px
+					.btn-uno
+						width 240px
+					.btn-dos 
+						width 120px
+						margin-left 40px
+			.imagenes-ficha-tecnica-movil
+				display none !important
+			.imagenes-ficha-tecnica-desktop
+				display block
+			.imagenes-ficha-tecnica
+				width 50%
+				margin-left 10%
+				display inline-block
+				vertical-align top
+				.imagen-principal
+					width 80%
+				.miniaturas
+					width 10%
+					margin-left 10%
+					figure 
+						cursor pointer
+						margin-bottom 40px
+	.otros-productos
+		width 100%
+		background #fff
+		max-width 1200px
+		margin 0 auto
+		position relative
+		text-align left
+		text-align center
+		border-top 5px solid rojo-ralero
+		margin-top 50px
+		z-index 2
+		padding-bottom 50px
+		article
+			width 24%
+			border-top 2px dashed gris-clarito
+			padding-top 60px
+			position relative
+			overflow hidden
+			figure 
+				overflow hidden
+				transition all .5s
+				transform scale(1)
+				position relative 
+				z-index 1
+				img 
+					width auto !important
+					height 300px !important
+			.texto-articulo
+				position absolute
+				width 250px
+				left 50%
+				margin-left -125px
+				text-align center
+				z-index 3
+				transition all .5s
+			h2
+				z-index 3
+				transition all .5s
+				margin 0 auto
+				margin-bottom 20px
+			p, ul 
+				font-size 1rem
+				color #fff 
+				z-index 3
+				display none
+				transition all .5s
+				margin-bottom 20px
+			.btn-ficha-tecnica
+				width 100px 
+				height 30px 
+				line-height 30px 
+				margin 0 auto 
+				border 1px solid rojo-ralero
+				border-radius 15px
+				color #fff	
+				text-transform uppercase
+				font-weight 100
+				p 
+					display block
+			&:nth-child(odd)
+				margin-right initial
+				border-right initial
+			&:nth-child(3)
+				border-top 0px dashed gris-clarito
+			.circulo-azul
+				width 1000px
+				height 1000px
+				border-radius 50%
+				transform scale(0)
+				position absolute
+				background-color rgba(32, 57, 85, .90)
+				left 50%
+				margin-left -500px
+				top 50%
+				margin-top -500px
+				transform scale(0)
+				transition all .5s
+				z-index 2
+			&:hover 
+				.circulo-azul
+					transform scale(1)
+				figure 
+					transform scale(1.5)
+				.texto-articulo
+					margin-top -200px
+					h2 
+						color #fff 
+						margin-bottom 10px
+
+
+
+

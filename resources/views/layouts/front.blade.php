@@ -43,7 +43,12 @@
 				<div class="menu-secundario">
 					<nav>
 						<ul>
-							<li><p>Tel. 229 931 6993</p></li>
+							<form class="contenedor-buscador" method="POST" id="searchFilter" action="{{ route('front.search', $category) }}">
+								{{ csrf_field() }}
+								<input class="buscador" type="text" value="" name="search" placeholder="Buscar Producto" autocomplete="off">
+								<button class="hidden" type="submit"></button>
+							</form>
+													<li><p>Tel. 229 931 6993</p></li>
 							<li class="btn-horario"><p>Horarios</p></li>
 							<!--<li><a href="">Nosotros</a></li>-->
 							<li><a href="#contacto" class="btn-contacto">Contacto</a></li>
