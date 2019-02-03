@@ -20,7 +20,7 @@ Route::get('/related/{category}'	, 'FrontController@showRelatedArticles');
 Route::get('/product/{article}'	, 'FrontController@showArticle');
 Route::get('/product/view/{slug}'	, 'FrontController@articleBySlug');
 Route::get('/category/{category}'	, 'FrontController@category');
-Route::post('/category/search/{category}'	, 'FrontController@search')->name('front.search');
+Route::post('/category/search/'	, 'FrontController@search')->name('front.search');
 Route::get('/sendmessage'			, 'FrontController@messagesend')->name('send.message');
 
 

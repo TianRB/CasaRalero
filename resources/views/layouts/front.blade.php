@@ -43,7 +43,7 @@
 				<div class="menu-secundario">
 					<nav>
 						<ul>
-							<form class="contenedor-buscador" method="POST" id="searchFilter" action="{{ route('front.search', $category) }}">
+							<form class="contenedor-buscador" method="POST" id="searchFilter" action="{{ route('front.search') }}">
 								{{ csrf_field() }}
 								<input class="buscador" type="text" value="" name="search" placeholder="Buscar Producto" autocomplete="off">
 								<button class="hidden" type="submit"></button>

@@ -66,41 +66,12 @@ class FrontController extends Controller
 		})->get();
 		return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub, 'image' => $image, 'category' => str_slug($cat_name)]);
 	}
-	public function search(Request $request, $category)
+	public function search(Request $request)
 	{
 		$sub = Subcategory::all();
 		$image = 'cabecera-productos';
-		switch ($category) {
-			case 'muebles':
-			$cat_name = 'Muebles';
-			$image = 'portada_muebles';break;
-			case 'silleria':
-			$cat_name = 'Silleria';
-			$image = 'portada_silleria';break;
-			case 'archivo':
-			$cat_name = 'Archivo';
-			$image = 'portada_archivo';break;
-			case 'cafeteria-y-hoteleria':
-			$cat_name = 'Cafetería y Hotelería';
-			$image = 'portada_cafeteria-y-hoteleria';break;
-			case 'sofas-y-espera':
-			$cat_name = 'Sofás y Espera';
-			$image = 'portada_sofas-y-espera';break;
-			case 'recepciones':
-			$cat_name = 'Recepciones';
-			$image = 'portada_recepciones';break;
-			case 'accesorios':
-			$cat_name = 'Accesorios';
-			$image = 'portada_accesorios';break;
-			case 'escolares':
-			$cat_name = 'Escolares';
-			$image = 'portada_escolares';break;
-			default:
-			$cat_name = '';
-			$image = '';
-		}
-		$articles = Article::whereHas('categories', function($query) use ($cat_name) {
-			$query->where('categories.name', $cat_name); })->orderBy('title')->get();
+
+		$articles = Article::Title($request->search)->orderBy('title')->get();
 
 			//Obtener todos los id de artículos
 			$article_ids = collect($articles)->pluck('id');
@@ -110,7 +81,7 @@ class FrontController extends Controller
 			})->get();
 
 			$filtered_articles = $articles->intersect(Article::Title($request->input('search'))->get());
-			return view('frontend.category', ['articles' => $filtered_articles, 'subcategories' => $sub, 'image' => $image, 'category' => str_slug($cat_name)]);
+			return view('frontend.category', ['articles' => $filtered_articles, 'subcategories' => $sub, 'image' => $image]);
 		}
 
 		public function showArticles()
