@@ -20,6 +20,7 @@ Route::get('/related/{category}'	, 'FrontController@showRelatedArticles');
 Route::get('/product/{article}'	, 'FrontController@showArticle');
 Route::get('/product/view/{slug}'	, 'FrontController@articleBySlug');
 Route::get('/category/{category}'	, 'FrontController@category');
+Route::get('/fichastecnicas'	, 'FrontController@fichas');
 Route::post('/category/search/'	, 'FrontController@search')->name('front.search');
 Route::get('/sendmessage'			, 'FrontController@messagesend')->name('send.message');
 
@@ -32,6 +33,7 @@ Route::resource('categories'	, 'CategoryController');
 Route::resource('pictures', 'PicController');
 Route::resource('subcategories'	, 'SubcategoryController');
 Route::resource('sliders'		, 'SliderController');
+Route::resource('hojas'		, 'HojaController');
 Route::post('articles/search'	,['uses' => 'ArticleController@searchResults', 'as' => 'articles.search']);
 
 // Rutas auxiliares

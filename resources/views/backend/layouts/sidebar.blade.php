@@ -95,6 +95,12 @@
                                 <span class="sidebar-normal"> Imágenes de Portada</span>
                             </a>
                           </li>
+                          <li>
+                            <a href="{{ url('hojas/') }}">
+                                <span class="sidebar-mini-icon">F</span>
+                                <span class="sidebar-normal">Fíchas Técnicas</span>
+                            </a>
+                          </li>
                       </ul>
                   </div>
               </li>

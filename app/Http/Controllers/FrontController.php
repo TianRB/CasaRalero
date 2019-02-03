@@ -7,6 +7,7 @@ use App\Article;
 use App\Slider;
 use App\Subcategory;
 use App\Message;
+use App\Hoja;
 use App\Mail\NewMessage;
 use App\Mail\RecievedMessage;
 use Mail;
@@ -14,6 +15,11 @@ use Validator;
 
 class FrontController extends Controller
 {
+	public function fichas()
+	{
+		$fichas = Hoja::all();
+		return view('frontend.fichas', ['fichas' => $fichas]);
+	}
 	public function index()
 	{
 		$slides = Slider::where('enabled', 1)->take(3)->get();
