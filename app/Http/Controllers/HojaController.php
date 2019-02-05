@@ -60,7 +60,6 @@ class HojaController extends Controller
 		} else {
 			$m = new Hoja;
 			$m->fill($request->all());
-			$m->save();
 
 			// imagen 1
 			if ($request->file != null) {
@@ -68,8 +67,8 @@ class HojaController extends Controller
 				$file_name = str_random(16).'.'.$file->getClientOriginalExtension();
 				$m->file = 'img/hojas/'.$file_name;
 				$request->file->move('img/hojas/', $file_name);
-				$m->save();
 			}
+			$m->save();
 
 			return redirect()->route($this->prefix.'index');
 		}
