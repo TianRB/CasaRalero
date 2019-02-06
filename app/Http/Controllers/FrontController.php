@@ -75,7 +75,7 @@ class FrontController extends Controller
 	public function search(Request $request)
 	{
 		$sub = Subcategory::all();
-		$image = 'cabecera-productos';
+		$image = 'portada-busqueda';
 
 		$articles = Article::Title($request->search)->orderBy('title')->get();
 
