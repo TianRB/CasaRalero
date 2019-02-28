@@ -50,7 +50,7 @@ class HojaController extends Controller
 
 		$rules = [
 			'name' => 'unique:hojas|required|max:255',
-			'file' => 'max:800|mimes:pdf,jpg,jpeg,png'
+			'file' => 'required|max:20000|mimes:pdf,jpg,jpeg,png'
 		];
 		$validator = Validator::make($input, $rules);
 		if ($validator->fails()) {
@@ -108,7 +108,7 @@ class HojaController extends Controller
 
 		$rules = [
 			'name' => 'required|max:255',
-			'file' => 'max:800|mimes:pdf,jpg,jpeg,png'
+			'file' => 'max:20000|mimes:pdf,jpg,jpeg,png'
 		];
 		$validator = Validator::make($input, $rules);
 		if ($validator->fails()) {
