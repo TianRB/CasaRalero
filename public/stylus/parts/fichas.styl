@@ -1,0 +1,50 @@
+.contenedor-fichas
+	background url("../img/fondo-fichas.jpg")
+	background-size cover
+	width 100%
+	height 100%
+	padding-top 40px
+	background-position 50%
+	padding-bottom 40px
+.titulo-fichas
+	width 90%
+	max-width 900px
+	margin 0 auto 
+	box-shadow none
+	background transparent
+	h1 
+		font-size 1.5rem
+		text-transform uppercase
+		font-weight 800
+		color azul-ralero
+.fichas
+	width 90%
+	max-width 900px
+	margin 20px auto
+	a 
+		font-size 1rem
+		padding 10px 0px
+		text-transform uppercase
+.icon-link, icon-file-empty
+	font-size 1rem
+	color azul-ralero
+	margin-right 10px
+@media screen and (min-width: 1000px)
+	.contenedor-fichas
+		background url("../img/fondo-fichas.jpg")
+		background-size cover
+		width 100%
+		height 100%
+		padding-top 60px
+		background-position 50%
+	.titulo-fichas
+		margin-top 0px
+		margin-bottom 40px
+		position relative
+		background transparent
+		z-index 0
+		h1 
+			font-size 2.5rem
+	.fichas
+		&:last-child
+			margin-bottom 100px !important
