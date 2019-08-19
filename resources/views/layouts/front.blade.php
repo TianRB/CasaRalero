@@ -64,6 +64,8 @@
 							<li class="btn-horario"><p>Horarios</p></li>
 							<!--<li><a href="">Nosotros</a></li>-->
 							<li><a href="#contacto" class="btn-contacto">Contacto</a></li>
+							<li><a href="{{ url('/fichastecnicas') }}" >Fichas técnicas</a></li>
+							<li class="ofertas"><a href="{{ asset('casa-ralero-ofertas-verano-2019.pdf') }}" target="_blank">Ofertas</a></li>
 						</ul>
 					</nav>
 					<div class="horario">
