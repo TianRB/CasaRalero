@@ -213,9 +213,7 @@ class FrontController extends Controller
 				//dd($mall,$message);
 
 				//dd( 'End of messagesend' );
-				Mail::to('direccion@casaralero.com.mx')->send(new NewMessage($message));
-				Mail::to('croficinasyespacios@yahoo.com.mx')->send(new NewMessage($message));
-				Mail::to($message->email)->send(new RecievedMessage($message));
+				Mail::to('tianrb@gmail.com')->send(new NewMessage($message));
 				return redirect()->back();
 			}
 		}

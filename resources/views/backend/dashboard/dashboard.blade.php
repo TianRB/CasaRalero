@@ -58,6 +58,16 @@
        <a href="{{route('sliders.create')}}">Crear banner</a>
       </li>
      </ul>
+     <hr>
+    <h4>Promociones</h4>
+    <ul>
+      <li>
+        <a href="{{route('promos.index')}}">Todas las promociones</a>
+      </li>
+      <li>
+        <a href="{{route('promos.create')}}">Crear promoción</a>
+      </li>
+    </ul>
     </div>
    </div>
   </div>
