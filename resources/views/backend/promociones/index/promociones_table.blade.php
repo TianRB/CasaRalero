@@ -21,7 +21,7 @@
           <div class="row justify-content-center">
             <div class="col-md-5">
               <p>{{ $p->name }}</p>
-              <p>{{ $p->price }}</p>
+              <p>{{ $p->precio }}</p>
             </div>
           </div>
           <hr>

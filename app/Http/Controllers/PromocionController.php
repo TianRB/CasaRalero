@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Validator;
 use App\Promocion;
+use Image;
+use File;
 
 class PromocionController extends Controller
 {
@@ -108,9 +110,9 @@ class PromocionController extends Controller
         $input = $request->all();
         
         $rules = [
-            // 'name' => 'unique:Promocion|required00|max:255',
-            // 'display_name' => 'required|max:255',
-            // 'description' => 'max:800'
+            'name' => 'required|max:255',
+            'imagen' => 'mimes:jpeg,png,jpg|max:400',
+            'precio' => 'required|max:255'
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
@@ -119,9 +121,15 @@ class PromocionController extends Controller
             ->withInput();
         } else {
             $m = Promocion::find($id);
-            $m->update($request->all());
-            $m->name = str_slug($request->input('display_name'));
-            
+            $m->update($input);
+            if (Input::file('imagen')) { // Si hay imagen
+                File::delete(public_path($m->imagen)); // Eliminar vieja imagen
+                $file = Input::file('imagen'); //  Crear Imagen
+                $file_name = str_random(12).'.'.$file->getClientOriginalExtension();
+                $img_path ='promo_pictures/'.$file_name;
+                $request->imagen->move('promo_pictures/', $file_name);
+                $m->imagen = $img_path; 
+            }
             $m->save();
             return redirect()->route($this->prefix.'index');
         }
@@ -135,6 +143,7 @@ class PromocionController extends Controller
     */
     public function destroy($id){
         $m = Promocion::find($id);
+        File::delete(public_path($m->imagen)); // Eliminar imagen
         $m->delete();
         return redirect()->route($this->prefix.'index');
     }

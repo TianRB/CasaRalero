@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Promocion extends Model
 {
     protected $table = 'promociones';
-    protected $fillable = ['name', 'imagen', 'precio'];
+    protected $fillable = ['name', 'precio'];
 
     public function scopeName($query, $name)
     {
