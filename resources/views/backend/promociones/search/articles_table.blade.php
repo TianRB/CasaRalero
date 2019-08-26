@@ -1,4 +1,4 @@
-@include('backend.article.index.toolbar')
+@include('backend.promociones.index.toolbar')
 <div class="row justify-content-start">
  @if (count($articles) > 0)
   @foreach($articles as $a)

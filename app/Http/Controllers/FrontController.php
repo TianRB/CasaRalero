@@ -8,6 +8,7 @@ use App\Slider;
 use App\Subcategory;
 use App\Message;
 use App\Hoja;
+use App\Promocion;
 use App\Mail\NewMessage;
 use App\Mail\RecievedMessage;
 use Mail;
@@ -15,6 +16,11 @@ use Validator;
 
 class FrontController extends Controller
 {
+	public function promociones()
+	{
+		$promociones = Promocion::all();
+		return view('frontend.promociones', ['promociones' => $promociones]);
+	}
 	public function fichas()
 	{
 		$fichas = Hoja::all();

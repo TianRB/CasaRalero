@@ -3,9 +3,9 @@
 @section('content')
  <!-- Navbar -->
  @include('backend.layouts.navbars.nav_expand')
- @include('backend.article.edit.header')
+ @include('backend.promociones.edit.header')
  <div class="content">
-   @include('backend.article.edit.form')
+   @include('backend.promociones.edit.form')
  </div>
  @include('backend.layouts.footers.footer')
 @endsection

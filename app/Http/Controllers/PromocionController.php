@@ -49,7 +49,7 @@ class PromocionController extends Controller
         $input = $request->all();
         
         $rules = [
-            'name' => 'required|max:255',
+            'name' => 'required|unique:promociones|max:255',
             'imagen' => 'required|mimes:jpeg,png,jpg|max:400',
             'precio' => 'required|max:255'
         ];
@@ -68,10 +68,10 @@ class PromocionController extends Controller
 
             $m = new Promocion; // Modelo
             $m->fill($request->all());
-            $m->image = $img_path;
+            $m->imagen = $img_path;
 
             $m->save();
-            return redirect('promociones/');
+            return redirect()->route($this->prefix.'index');
         }
     }
     

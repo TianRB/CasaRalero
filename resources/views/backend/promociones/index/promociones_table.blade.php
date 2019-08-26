@@ -14,7 +14,7 @@
         <div class="card-body">
           <div class="row justify-content-center">
             <div class="col-md-12">
-              <div class="promociones_image" style="background-image:url('{{ asset($p->imagen) }}');"></div>
+              <div class="article_image" style="background-image:url('{{ asset($p->imagen) }}');"></div>
             </div>
           </div>
           <hr>

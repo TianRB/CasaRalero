@@ -2,9 +2,9 @@
 @section('content')
  <!-- Navbar -->
  @include('backend.layouts.navbars.nav_expand')
- @include('backend.article.show.header')
+ @include('backend.promociones.show.header')
  <div class="content">
-   @include('backend.article.show.article')
+   @include('backend.promociones.show.article')
  </div>
  @include('backend.layouts.footers.footer')
 @endsection
